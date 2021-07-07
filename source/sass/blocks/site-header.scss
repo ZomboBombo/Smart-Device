@@ -1,0 +1,46 @@
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 33px;
+}
+
+.site-header__logo {
+  margin-left: 13px;
+}
+
+.site-header__contacts-link {
+  position: relative;
+
+  margin-right: 113px;
+
+  color: $white;
+  text-decoration: none;
+
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.site-header__contacts-link-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+
+  &--mail {
+    left: -38px;
+  }
+
+  &--phone {
+    left: -34px;
+  }
+}
+
+.site-header__callback-button {
+  margin-left: 39px;
+  cursor: pointer;
+}
