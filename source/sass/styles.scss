@@ -6,3 +6,18 @@
 @import "variables.scss";
 @import "mixins.scss";
 @import "global.scss";
+
+
+/* *****************************
+*** 2. Вспомогательные стили ***
+***************************** */
+@import "blocks/container.scss";
+@import "blocks/button.scss";
+
+
+/* **********************
+*** 3. Основные стили ***
+********************** */
+
+// --- 3.1) стили для Главных контентных блоков ---
+@import "blocks/site-header.scss";
