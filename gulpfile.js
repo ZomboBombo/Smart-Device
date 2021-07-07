@@ -105,7 +105,7 @@ gulp.task("webp", () => {
 // *** Сборка SVG-спрайта ***
 gulp.task("sprite", () => {
   return pipeline(
-    gulp.src("source/img/{icon-*,htmlacademy*}.svg"),
+    gulp.src("source/img/**/{icon-*,htmlacademy*}.svg"),
     svgstore({inlineSvg: true}),
     rename("sprite_auto.svg"),
     gulp.dest("build/img")
@@ -142,7 +142,7 @@ gulp.task("copy", () => {
 
 
 // *** Очистка директории build/ ***
-gulp.task("clean", function () {
+gulp.task("clean", () => {
   return del("build");
 });
 
