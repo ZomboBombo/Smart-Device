@@ -1,0 +1,34 @@
+// === ШРИФТЫ ===
+
+// *** жирность «Regular» ***
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+
+  src:
+    local(Roboto Condensed Regular),
+    local(RobotoCondensed-Regular),
+    url('../fonts/RobotoCondensed-Regular.woff2') format('woff2'),
+    url('../fonts/RobotoCondensed-Regular.woff') format('woff');
+
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+
+// *** жирность «Bold» ***
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+
+  src:
+    local(Roboto Condensed Bold),
+    local(RobotoCondensed-Bold),
+    url('../fonts/') format('woff2'),
+    url('../fonts/') format('woff');
+
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
