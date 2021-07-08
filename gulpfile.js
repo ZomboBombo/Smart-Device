@@ -23,6 +23,7 @@ const pipeline = require('readable-stream').pipeline;
 const imagemin = require("gulp-imagemin");
 const webp = require("gulp-webp");
 const svgstore = require("gulp-svgstore");
+const cheerio = require("gulp-cheerio");
 
 // --- Вспомогательные утилиты ---
 const rename = require("gulp-rename");
@@ -37,6 +38,18 @@ const server = require("browser-sync").create();
 ----------------------- ТАСКИ -----------------------
 =====================================================
 */
+
+// *** Обработка HTML-файлов ***
+gulp.task("html", () => {
+  return pipeline(
+    gulp.src("source/*.html"),
+    posthtml([
+      include()
+    ]),
+    gulp.dest("build")
+  );
+});
+
 
 // *** Обработка всех SCSS-файлов и преобразование их в CSS-файлы ***
 gulp.task("css", () => {
@@ -57,24 +70,15 @@ gulp.task("css", () => {
 });
 
 
-// *** Работа с Сервером ***
-gulp.task("server", () => {
-  server.init({
-    server: "build/",
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false
-  });
-
-  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
-  gulp.watch("source/img/icon-*.svg", gulp.series("sprite", "html", "refresh"));
-  gulp.watch("source/*.html", gulp.series("html", "refresh"));
-});
-
-gulp.task("refresh", (done) => {
-  server.reload();
-  done();
+/*
+*** Временный таск: КОПИРОВАНИЕ JS в директорию /build
+*** Будет использоваться только на этапе разработки
+*/
+gulp.task("js", () => {
+  return pipeline(
+    gulp.src("source/js/*.js"),
+    gulp.dest("build/js")
+  );
 });
 
 
@@ -106,21 +110,15 @@ gulp.task("webp", () => {
 gulp.task("sprite", () => {
   return pipeline(
     gulp.src("source/img/**/{icon-*,htmlacademy*}.svg"),
-    svgstore({inlineSvg: true}),
+    cheerio({
+      run: ($) => {
+        $('[fill]').removeAttr('fill');
+      },
+      parserOptions: { xmlMode: true },
+    }),
+    svgstore({ inlineSvg: true }),
     rename("sprite_auto.svg"),
     gulp.dest("build/img")
-  );
-});
-
-
-// *** Обработка HTML-файлов ***
-gulp.task("html", () => {
-  return pipeline(
-    gulp.src("source/*.html"),
-    posthtml([
-      include()
-    ]),
-    gulp.dest("build")
   );
 });
 
@@ -144,6 +142,28 @@ gulp.task("copy", () => {
 // *** Очистка директории build/ ***
 gulp.task("clean", () => {
   return del("build");
+});
+
+
+// *** Работа с Сервером ***
+gulp.task("server", () => {
+  server.init({
+    server: "build/",
+    notify: false,
+    open: true,
+    cors: true,
+    ui: false
+  });
+
+  gulp.watch("source/*.html", gulp.series("html", "refresh"));
+  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
+  gulp.watch("source/js/*.js", gulp.series("js", "refresh"));
+  gulp.watch("source/img/icon-*.svg", gulp.series("sprite", "html", "refresh"));
+});
+
+gulp.task("refresh", (done) => {
+  server.reload();
+  done();
 });
 
 
