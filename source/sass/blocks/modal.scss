@@ -1,0 +1,42 @@
+.modal {
+  display: none;
+
+  &--show {
+    display: flex;
+  }
+
+  &--overlay {
+    position: fixed;
+    z-index: 1;
+
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $black--translucent;
+  }
+
+  &--window {
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 490px;
+    min-height: 605px;
+
+    margin: auto;
+
+    background-color: $main-site-color;
+  }
+}
+
+.modal p {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  font-family: "Roboto Condensed", "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 140.62%;
+  color: $white;
+}
