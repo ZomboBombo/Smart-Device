@@ -10,7 +10,7 @@
 
 
 // Миксин для настроек плавности интерактивных элементов
-@mixin transition-settings ($property, $duration, $timing-func) {
+@mixin transition-settings ($property, $duration: 0.15s, $timing-func: ease) {
   transition: {
     property: $property;
     duration: $duration;
