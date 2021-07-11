@@ -1,0 +1,102 @@
+.copyright {
+  border-top: 1px solid rgba(#626962, 0.2);
+}
+
+.copyright__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  min-height: 52px;
+
+  padding-top: 14px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-left: 4px;
+}
+
+.copyright__column {
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  &--first {
+    width: 100%;
+    max-width: 816px;
+  }
+}
+
+.copyright__column p {
+  margin: 0;
+  padding: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: $footer-gray--translucent;
+  text-transform: uppercase;
+}
+
+.copyright__column a {
+  color: $footer-gray--translucent;
+  text-decoration: none;
+}
+
+.copyright__column .copyright__description--years {
+  margin-left: 74px;
+}
+
+.copyright__column .copyright__privacy-policy {
+  margin-left: auto;
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.copyright__column a:hover,
+.copyright__column a:focus {
+  color: $main-site-color;
+  text-decoration: underline;
+}
+
+.copyright__column a:active {
+  opacity: 0.7;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .copyright {
+    border-top: none;
+  }
+
+  .copyright__description {
+    display: none;
+  }
+
+  .copyright__column {
+    &--first {
+      width: auto;
+    }
+  }
+
+  .copyright__wrapper {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .copyright__wrapper {
+    justify-content: center;
+  }
+}

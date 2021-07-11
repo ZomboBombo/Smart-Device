@@ -1,0 +1,36 @@
+.company-years {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: $footer-gray--translucent;
+  text-transform: uppercase;
+
+  &--top {
+    display: none;
+  }
+
+  &--bottom {
+    display: block;
+  }
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .company-years {
+    &--top {
+      display: block;
+    }
+
+    &--bottom {
+      display: none;
+    }
+  }
+}

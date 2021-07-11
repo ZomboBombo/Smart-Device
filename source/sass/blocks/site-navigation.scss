@@ -1,0 +1,77 @@
+.site-navigation__menu {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-column-gap: 73px;
+
+  padding-top: 26px;
+}
+
+.site-navigation__menu ul {
+  @include markerless;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.site-navigation__menu li {
+  width: 100%;
+  max-width: 250px;
+}
+
+.site-navigation__menu a {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25px;
+  text-decoration: none;
+  color: $footer-gray--translucent;
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.site-navigation__menu a:hover,
+.site-navigation__menu a:focus {
+  color: $main-site-color;
+  text-decoration: underline;
+}
+
+.site-navigation__menu a:active {
+  opacity: 0.7;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .site-navigation {
+    margin-left: 0;
+  }
+
+  .site-navigation__menu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .site-navigation {
+    width: 100%;
+
+    padding-top: 28px;
+    padding-right: 15px;
+    padding-bottom: 28px;
+    padding-left: 15px;
+
+    border-bottom: 1px solid rgba(#626962, 0.2);
+  }
+}
