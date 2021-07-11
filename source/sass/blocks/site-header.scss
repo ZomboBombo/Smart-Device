@@ -9,7 +9,7 @@
   padding-right: 13px;
 }
 
-.site-header__contacts ul {
+.site-header__contacts-list {
   @include markerless;
 
   display: inline-flex;
@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.site-header__contacts li {
+.site-header__contacts-list li {
   margin-right: 113px;
 
   &:last-child {
@@ -33,7 +33,7 @@
   text-decoration: none;
 
   $properties-for-transition: color, opacity;
-  @include transition-settings($properties-for-transition, 0.15s, ease);
+  @include transition-settings($properties-for-transition);
 }
 
 .site-header__contacts-link-icon {
@@ -44,7 +44,7 @@
   fill: $main-site-color;
 
   $properties-for-transition: fill;
-  @include transition-settings($properties-for-transition, 0.15s, ease);
+  @include transition-settings($properties-for-transition);
 
 
   &--mail {
@@ -62,7 +62,7 @@
   cursor: pointer;
 
   $properties-for-transition: background-color, border-color, opacity;
-  @include transition-settings($properties-for-transition, 0.15s, ease);
+  @include transition-settings($properties-for-transition);
 }
 
 
@@ -112,7 +112,7 @@
     margin: 0;
   }
 
-  .site-header__contacts li {
+  .site-header__contacts-list li {
     margin-right: 34px;
     padding-top: 7px;
   }
@@ -150,7 +150,7 @@
     padding-left: 17px;
   }
 
-  .site-header__contacts li {
+  .site-header__contacts-list li {
     margin-right: 21px;
   }
 }
