@@ -24,11 +24,11 @@
       </a>
 
       <div class="site-header__contacts">
-        <ul>
+        <ul class="site-header__contacts-list">
           <li>
             <a href="mailto:info@sd.ru" class="site-header__contacts-link">
               <svg width="19" height="14" class="site-header__contacts-link-icon site-header__contacts-link-icon--mail">
-                <use xlink:href="#icon-mail">
+                <use xlink:href="#icon-mail"></use>
               </svg>
               info@sd.ru
             </a>
@@ -36,7 +36,7 @@
           <li>
             <a href="tel:+74950005252" class="site-header__contacts-link">
               <svg width="18" height="18" class="site-header__contacts-link-icon site-header__contacts-link-icon--phone">
-                <use xlink:href="#icon-phone">
+                <use xlink:href="#icon-phone"></use>
               </svg>
               +7 (495) 000 52 52
             </a>
@@ -49,48 +49,48 @@
 
 
     <footer class="site-footer">
-      <section class="site-footer__info-section">
-        <h2 class="visually-hidden">Информационный раздел</h2>
+      <section class="container service-info">
+        <h2 class="visually-hidden">Служебная информация</h2>
 
-        <div class="container">
-          <div class="site-footer__column">
-            <a class="logo site-footer__logo">
-              <img src="img/logo-footer.svg" width="202" height="52" alt="Логотип «Service Device»">
-            </a>
+        <section class="service-info__column service-info__column--first socials">
+          <h3 class="visually-hidden">Социальные сети</h3>
 
-            <section class="socials">
-              <h2 class="visually-hidden">Социальные сети</h2>
+          <a class="site-footer__logo">
+            <img src="img/logo-footer.svg" width="215" height="52" alt="Логотип «Service Device»">
+          </a>
 
-              <ul>
-                <li>
-                  <a href="#" title="Мы в «Facebook»" aria-label="Мы в «Facebook»">
-                    <svg width="27" height="27">
-                      <use xlink:href="#icon-facebook">
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Мы в «Одноклассниках»" aria-label="Мы в «Одноклассниках»">
-                    <svg width="27" height="27">
-                      <use xlink:href="#icon-classmates">
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Мы «ВКонтакте»" aria-label="Мы «ВКонтакте»">
-                    <svg width="27" height="27">
-                      <use xlink:href="#icon-vk">
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </section>
-          </div>
+          <p class="company-years company-years--top">1999-2018 SD Service Devices</p>
 
-          <section class="site-footer__column navigation-menu">
-            <h2>Разделы сайта</h2>
+          <ul class="socials__list">
+            <li>
+              <a href="#" title="Мы в «Facebook»" aria-label="Мы в «Facebook»">
+                <svg width="27" height="27">
+                  <use xlink:href="#icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Мы в «Одноклассниках»" aria-label="Мы в «Одноклассниках»">
+                <svg width="27" height="27">
+                  <use xlink:href="#icon-classmates"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Мы «ВКонтакте»" aria-label="Мы «ВКонтакте»">
+                <svg width="27" height="27">
+                  <use xlink:href="#icon-vk"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </section>
 
-            <nav>
+        <div class="service-info__column service-info__column--last">
+          <section class="site-navigation">
+            <h3 class="footer-title">Разделы сайта</h3>
+
+            <nav class="site-navigation__menu">
               <ul>
                 <li>
                   <a href="#">О компании</a>
@@ -101,9 +101,13 @@
                 <li>
                   <a href="#">Производство печатных плат</a>
                 </li>
+
                 <li>
                   <a href="#">Монтаж печатных плат</a>
                 </li>
+              </ul>
+
+              <ul>
                 <li>
                   <a href="#">Комплектующие</a>
                 </li>
@@ -117,13 +121,13 @@
             </nav>
           </section>
 
-          <section class="site-footer__column contacts">
-            <h2 class="visually-hidden">Контакты</h2>
+          <section class="contacts">
+            <h3 class="visually-hidden">Контакты</h3>
 
-            <p>Наш офис</p>
+            <p class="footer-title contacts__title">Наш офис</p>
             <span>г. Мытищи, Олимпийский проспект, д.10</span>
 
-            <ul>
+            <ul class="contacts__phones-list">
               <li>
                 <a href="tel:+74955894050">+7 (495) 589-40-50</a>
               </li>
@@ -138,21 +142,23 @@
         </div>
       </section>
 
-      <section class="container site-footer__copyright-section">
+      <section class="copyright">
         <h2 class="visually-hidden">Авторские права</h2>
 
-        <div class="site-footer__column">
-          <p>Все права защищены</p>
-          <p>1999-2018 SD Service Devices</p>
-          <p>
-            <a href="#">Условия конфиденциальности</a>
-          </p>
-        </div>
+        <div class="container copyright__wrapper">
+          <div class="copyright__column copyright__column--first">
+            <p class="copyright__description">Все права защищены</p>
+            <p class="company-years company-years--bottom copyright__description copyright__description--years">1999-2018 SD Service Devices</p>
+            <p class="copyright__privacy-policy">
+              <a href="#">Условия конфиденциальности</a>
+            </p>
+          </div>
 
-        <div class="site-footer__column">
-          <p>
-            Developed by <a href="#">WOW Studio</a>
-          </p>
+          <div class="copyright__column">
+            <p>
+              Developed by <a href="#">WOW Studio</a>
+            </p>
+          </div>
         </div>
       </section>
     </footer>
@@ -178,6 +184,6 @@
       ******* Скрипты ******
       **********************
     -->
-    <script type="module" src="js/modal.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
