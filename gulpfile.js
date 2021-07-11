@@ -17,6 +17,7 @@ const plumber = require("gulp-plumber");
 const sourcemap = require("gulp-sourcemaps");
 
 // --- JS-утилиты ---
+const concat = require("gulp-concat");
 const pipeline = require('readable-stream').pipeline;
 
 // --- Оптимизация изображений ---
@@ -70,13 +71,11 @@ gulp.task("css", () => {
 });
 
 
-/*
-*** Временный таск: КОПИРОВАНИЕ JS в директорию /build
-*** Будет использоваться только на этапе разработки
-*/
+// *** Сборка всех JS-файлов в один — main.js ***
 gulp.task("js", () => {
   return pipeline(
     gulp.src("source/js/*.js"),
+    concat('main.js'),
     gulp.dest("build/js")
   );
 });
@@ -129,7 +128,6 @@ gulp.task("copy", () => {
     gulp.src([
     "source/fonts/**/*.{woff,woff2}",
     "source/img/**",
-    "source/js/**",
     "source//*.ico"
     ], {
       base: "source"
@@ -168,5 +166,5 @@ gulp.task("refresh", (done) => {
 
 
 // === Основные задачи для Сборки проекта в "продакшн" и поднятие Сервера ===
-gulp.task("build", gulp.series("clean", "copy", "css", "sprite", "html"));
+gulp.task("build", gulp.series("clean", "copy", "css", "js", "sprite", "html"));
 gulp.task("start", gulp.series("build", "server"));
