@@ -8,12 +8,14 @@
 @import "global.scss";
 
 
-/* *****************************
-*** 2. Вспомогательные стили ***
-***************************** */
+/* ***************************
+*** 2. Универсальные стили ***
+*************************** */
 @import "blocks/container.scss";
 @import "blocks/button.scss";
 @import "blocks/logo.scss";
+@import "blocks/company-years.scss";
+@import "blocks/footer-title.scss";
 
 
 /* **********************
@@ -23,6 +25,13 @@
 // --- 3.1) стили для Главных контентных блоков ---
 @import "blocks/site-header.scss";
 @import "blocks/site-footer.scss";
+
+// --- 3.2) стили разделов Подвала сайта ---
+@import "blocks/service-info.scss";
+@import "blocks/socials.scss";
+@import "blocks/site-navigation.scss";
+@import "blocks/contacts.scss";
+@import "blocks/copyright.scss";
 
 
 /* **********************
