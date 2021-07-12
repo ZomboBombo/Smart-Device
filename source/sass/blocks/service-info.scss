@@ -67,4 +67,9 @@
   .service-info__column {
     padding: 0;
   }
+
+  .service-info__title-box {
+    display: flex;
+    justify-content: space-between;
+  }
 }
