@@ -24,6 +24,7 @@
 
 // --- 3.1) стили для Главных контентных блоков ---
 @import "blocks/site-header.scss";
+@import "blocks/site-main-content.scss";
 @import "blocks/site-footer.scss";
 
 // --- 3.2) стили разделов Подвала сайта ---
@@ -35,6 +36,9 @@
 
 // --- 3.3) стили Главного экрана ---
 @import "blocks/main-screen.scss";
+
+// --- 3.4) стили секции "Преимущества" ---
+@import "blocks/advantages.scss";
 
 
 /* **********************************
