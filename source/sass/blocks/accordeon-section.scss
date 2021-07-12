@@ -1,0 +1,90 @@
+.accordeon-section__toggle-button {
+  position: relative;
+
+  display: none;
+
+  width: 16px;
+  height: 16px;
+
+  font-size: 0;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: #C4C4C4;
+
+    $properties-for-transition: background-color, opacity, transform;
+    @include transition-settings($properties-for-transition);
+  }
+
+  &::before {
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.accordeon-section__toggle-button--tab-open {
+  &::after {
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.accordeon-section__toggle-button:hover::before,
+.accordeon-section__toggle-button:hover::after,
+.accordeon-section__toggle-button:focus::before,
+.accordeon-section__toggle-button:focus::after {
+  background-color: $main-site-color;
+}
+
+.accordeon-section__toggle-button:active::before,
+.accordeon-section__toggle-button:active::after {
+  opacity: 0.7;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .accordeon-section__toggle-button {
+    &--js-active {
+      display: block;
+    }
+  }
+
+  .accordeon-section .accordeon-section__tab {
+    &--js-active {
+      display: none;
+    }
+
+    &--tab-open {
+      display: block;
+    }
+  }
+}
