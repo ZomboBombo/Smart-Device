@@ -51,23 +51,28 @@
     <main class="container site-main-content">
       <h1 class="visually-hidden">Компания «Smart Device»</h1>
 
-      <p class="site-main-content__title">Печатные платы</p>
-      <p class="site-main-content__description">производство и монтаж, поставка комплектующих, блоков и модулей</p>
+      <section class="main-screen">
+        <h2 class="visually-hidden">Главный экран</h2>
 
-      <picture>
-        <source type="image/webp" srcset="img/microcircuits.webp">
-        <img src="img/microcircuits.png" width="705" height="515" class="site-main-content__decorative-image site-main-content__decorative-image--main" alt="Изображение «Печатные платы»">
-      </picture>
+        <a href="#" class="main-screen__decorative-link" title="Пролистать страницу к «Преимуществам»" aria-label="Пролистать страницу к «Преимуществам»">Скролл вниз</a>
 
-      <picture>
-        <source type="image/webp" srcset="img/microcircuits-background-decorative-triangles.webp">
-        <img src="img/microcircuits-background-decorative-triangles.png" class="site-main-content__decorative-image site-main-content__decorative-image--background" alt="Декоративный фон">
-      </picture>
+        <div class="main-screen__content">
+          <p class="main-screen__title">Печатные платы</p>
+          <p class="main-screen__description">производство и монтаж, поставка комплектующих, блоков и модулей</p>
 
-      <a href="#" class="site-main-content__decorative-link" title="Пролистать страницу к «Преимуществам»" aria-label="Пролистать страницу к «Преимуществам»">Скролл вниз</a>
-      <a href="#" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Бесплатная консультация</a>
-      <a href="#" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Получить бесплатную консультацию</a>
+          <a href="#" class="button main-screen__callback-button main-screen__callback-button--mobile" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Бесплатная консультация</a>
+          <a href="#" class="button main-screen__callback-button" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Получить бесплатную консультацию</a>
+        </div>
 
+        <div class="main-screen__image-box">
+          <img src="img/microcircuits-background-decorative-triangles.svg" srcset="" class="main-screen__image main-screen__image--background" alt="Декоративный фон">
+
+          <picture>
+            <source type="image/webp" srcset="img/microcircuits.webp, img/microcircuits@2x.webp 2x">
+            <img srcset="img/microcircuits@2x.png 2x" src="img/microcircuits.png" width="705" height="515" class="main-screen__image main-screen__image--main" alt="Изображение «Печатные платы»">
+          </picture>
+        </div>
+      </section>
     </main>
 
 
