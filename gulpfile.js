@@ -86,8 +86,8 @@ gulp.task("images", () => {
   return pipeline(
     gulp.src("source/img/**/*.{png,jpg,svg}"),
     imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({ optimizationLevel: 3 }),
+      imagemin.jpegtran({ progressive: true }),
       imagemin.svgo()
     ]),
     gulp.dest("source/img")
@@ -99,7 +99,7 @@ gulp.task("images", () => {
 gulp.task("webp", () => {
   return pipeline(
     gulp.src("source/img/**/*.{png,jpg}"),
-    webp({quality: 90}),
+    webp({ quality: 90 }),
     gulp.dest("source/img")
   );
 });
