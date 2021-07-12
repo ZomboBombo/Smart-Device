@@ -1,0 +1,129 @@
+.advantages {
+  margin-top: 110px;
+}
+
+.advantages__list {
+  @include markerless;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+
+  width: 100%;
+  max-width: 1170px;
+
+  margin: 0 auto;
+}
+
+.advantages__list li {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 300px;
+
+  padding-top: 40px;
+  padding-right: 42px;
+  padding-bottom: 49px;
+  padding-left: 45px;
+
+  border: 1px solid #EBEBEB;
+  border-left: 3px solid $main-site-color;
+}
+
+.advantages__list svg {
+  fill: $main-site-color;
+}
+
+.advantages__list span {
+  margin-top: 24px;
+
+  font-family: $additional-font;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 34px;
+  color: $main-site-color;
+}
+
+.advantages__list p {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #666666;
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.advantages__list li:hover {
+  background-color: $main-site-color;
+  border-color: $main-site-color;
+}
+
+.advantages__list li:hover > svg {
+  fill: $white;
+}
+
+.advantages__list li:hover > span,
+.advantages__list li:hover > p {
+  color: $white;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .advantages {
+    margin-top: 60px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+
+  .advantages__list li {
+    padding-top: 24px;
+    padding-right: 22px;
+    padding-bottom: 34px;
+    padding-left: 25px;
+  }
+
+  .advantages__list span {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .advantages__list p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .advantages {
+    margin-top: 40px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .advantages__list {
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+  }
+
+  .advantages__list span {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
