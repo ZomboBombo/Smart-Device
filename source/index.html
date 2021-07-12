@@ -48,6 +48,29 @@
     </header>
 
 
+    <main class="container site-main-content">
+      <h1 class="visually-hidden">Компания «Smart Device»</h1>
+
+      <p class="site-main-content__title">Печатные платы</p>
+      <p class="site-main-content__description">производство и монтаж, поставка комплектующих, блоков и модулей</p>
+
+      <picture>
+        <source type="image/webp" srcset="img/microcircuits.webp">
+        <img src="img/microcircuits.png" width="705" height="515" class="site-main-content__decorative-image site-main-content__decorative-image--main" alt="Изображение «Печатные платы»">
+      </picture>
+
+      <picture>
+        <source type="image/webp" srcset="img/microcircuits-background-decorative-triangles.webp">
+        <img src="img/microcircuits-background-decorative-triangles.png" class="site-main-content__decorative-image site-main-content__decorative-image--background" alt="Декоративный фон">
+      </picture>
+
+      <a href="#" class="site-main-content__decorative-link" title="Пролистать страницу к «Преимуществам»" aria-label="Пролистать страницу к «Преимуществам»">Скролл вниз</a>
+      <a href="#" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Бесплатная консультация</a>
+      <a href="#" title="Пролистать страницу к Форме обратного звонка" aria-label="Пролистать страницу к Форме обратного звонка">Получить бесплатную консультацию</a>
+
+    </main>
+
+
     <footer class="site-footer">
       <section class="container service-info">
         <h2 class="visually-hidden">Служебная информация</h2>
@@ -87,10 +110,14 @@
         </section>
 
         <div class="service-info__column service-info__column--last">
-          <section class="site-navigation">
-            <h3 class="footer-title">Разделы сайта</h3>
+          <section class="accordeon-section site-navigation">
+            <div class="service-info__title-box">
+              <h3 class="footer-title">Разделы сайта</h3>
 
-            <nav class="site-navigation__menu">
+              <button type="button" class="accordeon-section__toggle-button" title="Раскрыть «Разделы сайта»" aria-label="Раскрыть «Разделы сайта»">Развернуть</button>
+            </div>
+
+            <nav class="accordeon-section__tab site-navigation__menu">
               <ul>
                 <li>
                   <a href="#">О компании</a>
@@ -121,23 +148,30 @@
             </nav>
           </section>
 
-          <section class="contacts">
+          <section class="accordeon-section contacts">
             <h3 class="visually-hidden">Контакты</h3>
 
-            <p class="footer-title contacts__title">Наш офис</p>
-            <span>г. Мытищи, Олимпийский проспект, д.10</span>
+            <div class="service-info__title-box">
+              <p class="footer-title contacts__title">Наш офис</p>
 
-            <ul class="contacts__phones-list">
-              <li>
-                <a href="tel:+74955894050">+7 (495) 589-40-50</a>
-              </li>
-              <li>
-                <a href="tel:+79250038767">+7 (925) 003-87-67</a>
-              </li>
-              <li>
-                <a href="tel:+792692608079">+7 (926) 926-080-79</a>
-              </li>
-            </ul>
+              <button type="button" class="accordeon-section__toggle-button" title="Раскрыть «Контакты»" aria-label="Раскрыть «Контакты»">Развернуть</button>
+            </div>
+
+            <div class="accordeon-section__tab">
+              <span>г. Мытищи, Олимпийский проспект, д.10</span>
+
+              <ul class="contacts__phones-list">
+                <li>
+                  <a href="tel:+74955894050">+7 (495) 589-40-50</a>
+                </li>
+                <li>
+                  <a href="tel:+79250038767">+7 (925) 003-87-67</a>
+                </li>
+                <li>
+                  <a href="tel:+792692608079">+7 (926) 926-080-79</a>
+                </li>
+              </ul>
+            </div>
           </section>
         </div>
       </section>
@@ -184,6 +218,6 @@
       ******* Скрипты ******
       **********************
     -->
-    <script type="module" src="js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
