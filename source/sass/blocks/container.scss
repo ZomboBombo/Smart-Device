@@ -4,4 +4,9 @@
 
   margin: 0 auto;
   padding: 0;
+
+
+  &--inner-box {
+    max-width: $width--inner-box;
+  }
 }
