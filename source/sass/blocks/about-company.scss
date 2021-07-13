@@ -1,0 +1,110 @@
+.about-company {
+  display: flex;
+  margin-top: 110px;
+}
+
+.about-company__wrapper {
+  margin-left: 40px;
+}
+
+.about-company h2 {
+  margin: 0;
+  padding: 0;
+
+  font-family: $additional-font;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 51px;
+  color: #666666;
+}
+
+.about-company__wrapper p {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #666666;
+}
+
+.about-company__details-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 180px;
+
+  margin-top: 30px;
+
+  color: $main-site-color;
+  text-decoration: none;
+
+  border-color: $main-site-color;
+
+  $properties-for-transition: color, background-color, opacity;
+  @include transition-settings($properties-for-transition);
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.about-company__details-link:hover,
+.about-company__details-link:focus {
+  color: $white;
+  background-color: $main-site-color;
+}
+
+.about-company__details-link:active {
+  opacity: 0.7;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .about-company {
+    margin-top: 60px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+
+  .about-company h2 {
+    font-size: 32px;
+    line-height: 45px;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .about-company {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .about-company img {
+    display: none;
+  }
+
+  .about-company__wrapper {
+    margin: 0;
+  }
+
+  .about-company h2 {
+    font-size: 28px;
+    line-height: 39px;
+  }
+
+  .about-company__wrapper p {
+    margin-top: 30px;
+  }
+}
