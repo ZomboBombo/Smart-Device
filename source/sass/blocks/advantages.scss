@@ -10,9 +10,6 @@
   grid-column-gap: 30px;
   grid-row-gap: 30px;
 
-  width: 100%;
-  max-width: 1170px;
-
   margin: 0 auto;
 }
 
@@ -30,6 +27,9 @@
 
   border: 1px solid #EBEBEB;
   border-left: 3px solid $main-site-color;
+
+  $properties-for-transition: background-color, border-color;
+  @include transition-settings($properties-for-transition);
 }
 
 .advantages__list svg {
