@@ -7,7 +7,11 @@
   margin-left: 40px;
 }
 
-.about-company h2 {
+.about-company__description-box {
+  margin-top: 20px;
+}
+
+.about-company__wrapper h2 {
   margin: 0;
   padding: 0;
 
@@ -20,7 +24,7 @@
 
 .about-company__wrapper p {
   margin: 0;
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 0;
 
 
@@ -28,6 +32,11 @@
   font-weight: 400;
   line-height: 22px;
   color: #666666;
+
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .about-company__details-link {
@@ -99,12 +108,16 @@
     margin: 0;
   }
 
+  .about-company__description-box {
+    margin-top: 30px;
+  }
+
   .about-company h2 {
     font-size: 28px;
     line-height: 39px;
   }
 
   .about-company__wrapper p {
-    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
