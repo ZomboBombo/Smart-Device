@@ -27,7 +27,7 @@ body {
   line-height: 22px;
   color: $white;
 
-  background-color: $start-screen-background-color;
+  background-color: $body-background-color;
   background-image: url('../img/background-header.png');
   background-repeat: no-repeat;
   background-position: center top;
@@ -65,6 +65,7 @@ footer {
 ==================================
 */
 
+// *** Настройки для ретины ***
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   body {
     background-image: url('../img/background-header@2x.png');
