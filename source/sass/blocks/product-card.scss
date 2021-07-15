@@ -1,0 +1,160 @@
+.product-card a {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  max-width: 370px;
+  min-height: 620px;
+
+  background-color: #C4C4C4;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 100%;
+
+  text-decoration: none;
+
+  $properties-for-transition: transform, opacity;
+  @include transition-settings($properties-for-transition);
+
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+
+    $properties-for-transition: background-color;
+    @include transition-settings($properties-for-transition);
+  }
+
+  &::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: rgba($body-background-color, 0.7);
+  }
+
+  &::after {
+    right: 0;
+    bottom: 0;
+
+    width: 63px;
+    height: 63px;
+
+    background-color: $main-site-color;
+    background-image: url("../img/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px 14px;
+  }
+}
+
+.product-card--printed-boards-production a {
+  background-image: url("../img/printed-boards-production--desktop.jpg");
+}
+
+.product-card--printed-boards-assembly a {
+  background-image: url("../img/printed-boards-assembly--desktop.jpg");
+}
+
+.product-card--lighting-accessories a {
+  background-image: url("../img/lighting-accessories--desktop.jpg");
+}
+
+.product-card h3 {
+  position: absolute;
+  top: 50px;
+  left: 40px;
+
+  width: auto;
+  max-width: 170px;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: $additional-font;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: $white;
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.product-card a:hover,
+.product-card a:focus {
+  transform: translateY(6px);
+}
+
+.product-card a:hover::before,
+.product-card a:focus::before {
+  background-color: rgba($body-background-color, 0.6);
+}
+
+.product-card a:active {
+  transform: scale(0.98);
+  opacity: 0.7;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .product-card a {
+    max-width: 100%;
+    min-height: 256px;
+    background-size: cover;
+  }
+
+  .product-card--printed-boards-production a {
+    background-image: url("../img/printed-boards-production--tablet.jpg");
+  }
+
+  .product-card--printed-boards-assembly a {
+    background-image: url("../img/printed-boards-assembly--tablet.jpg");
+  }
+
+  .product-card--lighting-accessories a {
+    background-image: url("../img/lighting-accessories--tablet.jpg");
+  }
+}
+
+
+// *** Настройки для ретины: ширина вьюпорта "Десктоп" ***
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .product-card--printed-boards-production a {
+    background-image: url("../img/printed-boards-production--desktop@2x.jpg");
+  }
+
+  .product-card--printed-boards-assembly a {
+    background-image: url("../img/printed-boards-assembly--desktop@2x.jpg");
+  }
+
+  .product-card--lighting-accessories a {
+    background-image: url("../img/lighting-accessories--desktop@2x.jpg");
+  }
+}
+
+// *** Настройки для ретины: ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) and (-webkit-min-device-pixel-ratio: 2),
+       (max-width: $width--desktop) and (min-resolution: 192dpi) {
+  .product-card--printed-boards-production a {
+    background-image: url("../img/printed-boards-production--tablet@2x.jpg");
+  }
+
+  .product-card--printed-boards-assembly a {
+    background-image: url("../img/printed-boards-assembly--tablet@2x.jpg");
+  }
+
+  .product-card--lighting-accessories a {
+    background-image: url("../img/lighting-accessories--tablet@2x.jpg");
+  }
+}
