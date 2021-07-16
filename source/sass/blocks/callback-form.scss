@@ -176,6 +176,46 @@
 }
 
 
+// *************************** СТИЛИ для ПОПАПА с Формой: НАЧАЛО ***************************
+
+.callback-form__wrapper--modal-window fieldset {
+  flex-direction: column;
+}
+
+.callback-form__wrapper--modal-window input {
+  min-height: 52px;
+
+  margin-right: 0;
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.callback-form__wrapper textarea {
+  min-height: 104px;
+  margin-top: 30px;
+}
+
+.callback-form__submit-box--modal-window {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.callback-form__privacy-policy-label {
+  max-width: 386px;
+  margin-top: 30px;
+}
+
+.callback-form__submit-box--modal-window button {
+  margin-right: 0;
+}
+
+// *************************** СТИЛИ для ПОПАПА с Формой: КОНЕЦ ****************************
+
+
 /*
 *** Стили для интерактивности ***
 */
