@@ -43,7 +43,7 @@
           </li>
         </ul>
 
-        <button type="button" class="button site-header__callback-button" id="callback-button">Заказать звонок</button>
+        <a href="#" class="button site-header__callback-button" id="callback-button">Заказать звонок</a>
       </div>
     </header>
 
@@ -65,7 +65,7 @@
         </div>
 
         <div class="main-screen__image-box">
-          <img src="img/microcircuits-background-decorative-triangles.svg" class="main-screen__image main-screen__image--background" alt="Декоративный фон">
+          <img src="img/decorative-triangles.svg" class="main-screen__image main-screen__image--background" alt="Декоративный фон">
 
           <picture>
             <source type="image/webp" srcset="img/microcircuits.webp, img/microcircuits@2x.webp 2x">
@@ -167,6 +167,49 @@
           </li>
         </ul>
       </section>
+
+      <div class="site-main-content__callback-form">
+        <section class="container container--inner-box callback-form">
+          <h2 class="visually-hidden">Форма обратной связи</h2>
+
+          <div class="callback-form__column">
+            <img src="img/decorative-triangles.svg" class="callback-form__image callback-form__image--background" alt="Декоративный фон">
+
+            <picture>
+              <source type="image/webp" srcset="img/paper-airplane.webp, img/paper-airplane@2x.webp 2x">
+
+              <!-- 1x: w-511px, h-288px; 2x: w-1022px, h-576px -->
+              <img src="img/paper-airplane.png" srcset="img/paper-airplane@2x.png 2x" width="511" height="288" class="callback-form__image callback-form__image--main" alt="Изображение «Бумажный самолётик»">
+            </picture>
+          </div>
+
+          <div class="callback-form__column">
+            <span class="callback-form__title">Остались вопросы? Задайте их нам!</span>
+            <p class="callback-form__description">Мы проконсультируем Вас бесплатно</p>
+
+            <div class="callback-form__wrapper">
+              <form action="" method="post" enctype="multipart/form-data">
+                <fieldset>
+                  <legend class="visually-hidden">Контактные данные</legend>
+
+                  <input type="text" name="customer-name" id="callback-form-customer-name" title="Введите Ваше имя" aria-label="Введите Ваше имя" placeholder="Имя" required="">
+
+                  <input type="tel" name="customer-phone" id="callback-form-customer-phone" title="Введите номер телефона" aria-label="Введите номер телефона" placeholder="Телефон" required="">
+                </fieldset>
+
+                <textarea id="callback-form-customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваше сообщение"></textarea>
+
+                <div class="callback-form__submit-box">
+                  <input type="checkbox" name="privacy-policy" class="visually-hidden" id="callback-form-privacy-policy" checked="" required="">
+                  <label for="callback-form-privacy-policy" class="callback-form__privacy-policy-label">Я согласен на обработку  персональных данных</label>
+
+                  <button type="submit">Задать вопрос</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
 
