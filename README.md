@@ -14,4 +14,4 @@
 * Запуск тестирования на соответствия код-гайдам — `npm test`
 
 ---
-##### Сборка проекта построена на основе шаблона *«Gulp template Liga A»*
+##### Сборка проекта построена на основе шаблона [*«Gulp template Liga A»*](https://github.com/tsergeytovarov/gulp-template/ "Ссылка на шаблон сборки «Gulp template Liga A»")
