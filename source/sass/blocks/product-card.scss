@@ -145,7 +145,7 @@
 
 // *** Настройки для ретины: ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) and (-webkit-min-device-pixel-ratio: 2),
-       (max-width: $width--desktop) and (min-resolution: 192dpi) {
+      (max-width: $width--desktop) and (min-resolution: 192dpi) {
   .product-card--printed-boards-production a {
     background-image: url("../img/printed-boards-production--tablet@2x.jpg");
   }
