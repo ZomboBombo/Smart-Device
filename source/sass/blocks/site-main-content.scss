@@ -1,4 +1,37 @@
 .site-main-content__company-info {
+  padding-top: 110px;
+  padding-bottom: 110px;
+
   background-color: $white;
   border-top: 1px solid transparent;
+}
+
+.site-main-content__callback-form {
+  margin-top: 126px;
+  padding-top: 90px;
+  padding-bottom: 90px;
+
+  background-color: $main-site-color;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .site-main-content__company-info {
+    padding-top: 60px;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .site-main-content__company-info {
+    padding-top: 40px;
+  }
 }
