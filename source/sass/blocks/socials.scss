@@ -22,9 +22,10 @@
 }
 
 .socials__list svg {
-  fill: #CDCDCD;
+  fill: #cdcdcd;
 
   $properties-for-transition: fill, opacity;
+
   @include transition-settings($properties-for-transition);
 }
 

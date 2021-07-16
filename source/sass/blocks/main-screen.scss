@@ -95,6 +95,7 @@
   border-color: $main-site-color;
 
   $properties-for-transition: background-color, border;
+
   @include transition-settings($properties-for-transition);
 
 

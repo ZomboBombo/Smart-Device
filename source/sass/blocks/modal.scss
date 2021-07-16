@@ -65,6 +65,7 @@
   cursor: pointer;
 
   $properties-for-transition: background-color;
+
   @include transition-settings($properties-for-transition);
 
 
@@ -84,6 +85,7 @@
     border-radius: 5px;
 
     $properties-for-transition: background-color;
+
     @include transition-settings($properties-for-transition);
   }
 

@@ -26,9 +26,10 @@
     width: 100%;
     height: 1px;
 
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
 
     $properties-for-transition: background-color, opacity, transform;
+
     @include transition-settings($properties-for-transition);
   }
 

@@ -33,6 +33,7 @@
   text-decoration: none;
 
   $properties-for-transition: color, opacity;
+
   @include transition-settings($properties-for-transition);
 }
 
@@ -44,6 +45,7 @@
   fill: $main-site-color;
 
   $properties-for-transition: fill;
+
   @include transition-settings($properties-for-transition);
 
 
@@ -68,6 +70,7 @@
   cursor: pointer;
 
   $properties-for-transition: background-color, border-color, opacity;
+
   @include transition-settings($properties-for-transition);
 }
 

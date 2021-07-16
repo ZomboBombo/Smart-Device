@@ -28,7 +28,7 @@ body {
   color: $white;
 
   background-color: $body-background-color;
-  background-image: url('../img/background-header.png');
+  background-image: url("../img/background-header.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: auto auto;
@@ -66,8 +66,8 @@ footer {
 */
 
 // *** Настройки для ретины ***
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-resolution: 192dpi) {
   body {
-    background-image: url('../img/background-header@2x.png');
+    background-image: url("../img/background-header@2x.png");
   }
 }

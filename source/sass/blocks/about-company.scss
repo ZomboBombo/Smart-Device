@@ -57,6 +57,7 @@
   border-color: $main-site-color;
 
   $properties-for-transition: color, background-color, opacity;
+
   @include transition-settings($properties-for-transition);
 }
 
