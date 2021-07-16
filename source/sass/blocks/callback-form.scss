@@ -1,0 +1,282 @@
+.callback-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.callback-form__column {
+  position: relative;
+}
+
+.callback-form__image {
+  position: absolute;
+  display: block;
+
+  &--background {
+    top: 0;
+    left: -140px;
+  }
+
+  &--main {
+    top: 100px;
+    left: 0;
+  }
+}
+
+.callback-form__title {
+  font-family: $additional-font;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 51px;
+  color: $white;
+}
+
+.callback-form__description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: $white;
+}
+
+.callback-form__wrapper fieldset {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+}
+
+.callback-form__wrapper input,
+.callback-form__wrapper textarea {
+  width: 100%;
+
+  padding-right: 16px;
+  padding-left: 16px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: $white;
+
+  background-color: rgba($white, 0.1);
+  border: none;
+
+  $properties-for-transition: background-color;
+  @include transition-settings($properties-for-transition);
+}
+
+.callback-form__wrapper input {
+  flex-grow: 1;
+  min-height: 50px;
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.callback-form__wrapper textarea {
+  min-height: 154px;
+  margin-top: 40px;
+  padding-top: 14px;
+  resize: vertical;
+}
+
+.callback-form__submit-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 45px;
+}
+
+.callback-form__privacy-policy-label {
+  position: relative;
+
+  order: 2;
+
+  width: 100%;
+  max-width: 272px;
+
+  padding-left: 34px;
+
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 16px;
+  color: $white;
+
+  opacity: 0.8;
+  cursor: pointer;
+
+  $properties-for-transition: outline;
+  @include transition-settings($properties-for-transition);
+
+
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    display: block;
+
+    width: 17px;
+    height: 16px;
+
+    border: 1px solid $white;
+  }
+
+  &::after {
+    content: url("../img/tick.svg");
+
+    left: 2px;
+
+    display: none;
+
+    width: 13px;
+    height: auto;
+  }
+}
+
+.callback-form__submit-box button {
+  order: 1;
+
+  width: 100%;
+  min-width: 180px;
+  min-height: 45px;
+
+  margin-right: 38px;
+
+  font-family: $additional-font;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  color: $white;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  background-color: transparent;
+
+  border: 1px solid $white;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  $properties-for-transition: color, background-color;
+  @include transition-settings($properties-for-transition);
+}
+
+
+/*
+*** Стили для интерактивности ***
+*/
+.callback-form__wrapper input:hover,
+.callback-form__wrapper textarea:hover {
+  background-color: rgba($white, 0.2);
+}
+
+.callback-form__wrapper input:focus,
+.callback-form__wrapper textarea:focus {
+  color: $main-site-color;
+  background-color: rgba($white, 1);
+}
+
+.callback-form__submit-box button:hover,
+.callback-form__submit-box button:focus {
+  color: $main-site-color;
+  background-color: $white;
+}
+
+// *** Настройка для кастомизации чекбокса ***
+.callback-form__submit-box input[type="checkbox"]:focus + .callback-form__privacy-policy-label {
+  outline: 4px double $white;
+  outline-offset: 6px;
+}
+
+.callback-form__submit-box input[type="checkbox"]:checked + .callback-form__privacy-policy-label::after {
+  display: block;
+}
+
+
+/*
+==================================
+--------- МЕДИАВЫРАЖЕНИЯ ---------
+==================================
+*/
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--desktop) {
+  .callback-form {
+    display: block;
+
+    margin: 0 auto;
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+
+  .callback-form__image {
+    display: none;
+  }
+
+  .callback-form__title {
+    font-size: 32px;
+    line-height: 45px;
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .callback-form {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .callback-form__title {
+    font-size: 28px;
+    line-height: 39px;
+  }
+
+  .callback-form__wrapper fieldset {
+    flex-wrap: wrap;
+  }
+
+  .callback-form__wrapper input {
+    min-height: 52px;
+
+    margin-right: 0;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .callback-form__wrapper textarea {
+    min-height: 104px;
+    margin-top: 30px;
+  }
+
+  .callback-form__submit-box {
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  .callback-form__privacy-policy-label {
+    max-width: 400px;
+    margin-top: 30px;
+  }
+
+  .callback-form__submit-box button {
+    margin-right: 0;
+  }
+}
