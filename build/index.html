@@ -345,12 +345,37 @@
       *** Модальные окна ***
       **********************
     -->
-    <section class="modal modal--overlay">
+    <section class="modal modal--overlay" id="modal-overlay">
       <div class="modal modal--window">
         <h2 class="visually-hidden">Попап: Форма обратной связи</h2>
-        <p>Здесь будет Форма заказа обратного звонка</p>
 
-        <button type="button" id="callback-popup-close">Закрыть модальное окно</button>
+        <span class="callback-form__title">Закажите звонок</span>
+        <p class="callback-form__description">Оставьте контакты, мы проконсультируем вас бесплатно в удобное время</p>
+
+        <div class="callback-form__wrapper callback-form__wrapper--modal-window">
+          <form action="" method="post" enctype="multipart/form-data">
+            <fieldset>
+              <legend class="visually-hidden">Контактные данные</legend>
+
+              <input type="text" name="customer-name" id="callback-popup-customer-name" title="Введите Ваше имя" aria-label="Введите Ваше имя" placeholder="Имя" required="">
+
+              <input type="tel" name="customer-phone" id="callback-popup-customer-phone" title="Введите номер телефона" aria-label="Введите номер телефона" placeholder="Телефон" required="">
+            </fieldset>
+
+            <textarea id="callback-popup-customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваше сообщение"></textarea>
+
+            <div class="callback-form__submit-box callback-form__submit-box--modal-window">
+              <input type="checkbox" name="privacy-policy" class="visually-hidden" id="callback-popup-privacy-policy" checked="" required="">
+              <label for="callback-popup-privacy-policy" class="callback-form__privacy-policy-label">Я согласен на обработку  персональных данных</label>
+
+              <button type="submit">Отправить</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal__close-button-box">
+          <button type="button" class="modal__close-button" id="callback-popup-close" title="Закрыть модальное окно" aria-label="Закрыть модальное окно">Закрыть модальное окно</button>
+        </div>
       </div>
     </section>
 
