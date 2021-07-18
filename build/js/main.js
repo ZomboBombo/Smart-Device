@@ -163,11 +163,38 @@ window.characterLimiter = (() => {
 
 /*
 ===================================================================================================================================
+-------------------------------------------- Модуль маски ввода номера телефона: НАЧАЛО -------------------------------------------
+===================================================================================================================================
+*/
+window.maskForInputs = (() => {
+  // --------- DOM-элементы ---------
+  const telInputs = document.querySelectorAll('input[type="tel"]');
+
+
+  /*
+  ======================== ОСНОВНАЯ ЛОГИКА ========================
+  */
+  for (let telInput of telInputs) {
+    Inputmask({ "mask": "+7 (999) 999-99-99" }).mask(telInput);
+  }
+})();
+/*
+===================================================================================================================================
+-------------------------------------------- Модуль маски ввода номера телефона: КОНЕЦ --------------------------------------------
+===================================================================================================================================
+*/
+
+'use strict';
+
+/*
+===================================================================================================================================
 ------------------------------------------- Модуль логики работы Модального окна: НАЧАЛО ------------------------------------------
 ===================================================================================================================================
 */
 window.modal = (() => {
   // ----------- КОНСТАНТЫ ----------
+  const PAGE_TOP = 0;
+
   // *** Словарик для значений клавиши "Escape" ***
   const EscapeKey = {
     FULL_NAME: 'Escape',
@@ -190,6 +217,24 @@ window.modal = (() => {
   */
 
   /*
+  *** Функция для расчёта расстояния, которое было
+  *** "проскроллено" от начала страницы
+  */
+  const getBodyScrollTop = () => {
+    return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+  };
+
+
+  /*
+  *** Функция-флаг для определения, СУЩЕСТВУЕТ ли
+  *** на странице Вертикальный скролл
+  */
+  const isExistVerticalScroll = () => {
+    return document.body.offsetHeight > window.innerHeight;
+  };
+
+
+  /*
   *** Функция для обработчика события ЗАКРЫТИЯ попапа с Формой
   *** при НАЖАТИИ на клавишу "Escape"
   */
@@ -199,6 +244,16 @@ window.modal = (() => {
 
       for (let modalClose of modals) {
         modalClose.classList.remove('modal--show');
+      }
+
+      /*
+      *** ЕСЛИ Вертикальный скролл сущетвует,
+      *** ВЕРНУТЬ возможность скролла страницы
+      *** и "проскроллить" страницу на прежнее место
+      */
+      if (isExistVerticalScroll()) {
+        body.classList.remove('body-scroll-disabled');
+        window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
@@ -216,6 +271,16 @@ window.modal = (() => {
     if (evt.target === modalOverlay) {
       for (let modalClose of modals) {
         modalClose.classList.remove('modal--show');
+      }
+
+      /*
+      *** ЕСЛИ Вертикальный скролл сущетвует,
+      *** ВЕРНУТЬ возможность скролла страницы
+      *** и "проскроллить" страницу на прежнее место
+      */
+      if (isExistVerticalScroll()) {
+        body.classList.remove('body-scroll-disabled');
+        window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
@@ -236,6 +301,16 @@ window.modal = (() => {
       modalClose.classList.remove('modal--show');
     }
 
+    /*
+    *** ЕСЛИ Вертикальный скролл сущетвует,
+    *** ВЕРНУТЬ возможность скролла страницы
+    *** и "проскроллить" страницу на прежнее место
+    */
+    if (isExistVerticalScroll()) {
+      body.classList.remove('body-scroll-disabled');
+      window.scrollTo(PAGE_TOP, body.dataset.scrollY);
+    }
+
     callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
     modalOverlay.removeEventListener('click', onModalOverlayClick);
     document.removeEventListener('keydown', onEscPress);
@@ -251,6 +326,19 @@ window.modal = (() => {
     }
 
     formNameField.focus();
+
+    // --- Расчёт проскролленого расстояния от НАЧАЛА страницы ---
+    body.dataset.scrollY = getBodyScrollTop();
+
+    /*
+    *** ЕСЛИ Вертикальный скролл сущетвует,
+    *** УБРАТЬ возможность скролла страницы
+    *** и "проскроллить" страницу на прежнее место
+    */
+    if (isExistVerticalScroll()) {
+      body.classList.add('body-scroll-disabled');
+      body.style.top = `-${body.dataset.scrollY}px`;
+    }
 
     callbackPopupCloseButton.addEventListener('click', onCallbackPopupClose);
     modalOverlay.addEventListener('click', onModalOverlayClick);
