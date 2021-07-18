@@ -58,9 +58,13 @@
   .contacts {
     width: 100%;
 
-    padding-top: 28px;
+    padding-top: 27px;
     padding-right: 15px;
-    padding-bottom: 28px;
+    padding-bottom: 27px;
     padding-left: 15px;
+  }
+
+  .contacts span {
+    margin-top: 0;
   }
 }

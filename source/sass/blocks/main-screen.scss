@@ -2,18 +2,18 @@
   position: relative;
   display: flex;
 
-  min-height: 604px;
+  min-height: 620px;
 
-  margin-top: 176px;
+  margin-top: 173px;
   padding-right: 20px;
-  padding-left: 20px;
 }
 
 .main-screen__decorative-link {
   position: absolute;
-  bottom: 92px;
-  left: -26px;
+  bottom: 128px;
+  left: -33px;
   transform: rotate(-90deg);
+  z-index: 2;
 
   font-size: 14px;
   font-weight: normal;
@@ -48,7 +48,10 @@
 .main-screen__description {
   position: relative;
 
-  padding-left: 94px;
+  margin: 0;
+  margin-top: 26px;
+  padding: 0;
+  padding-left: 99px;
 
   font-size: 22px;
   font-weight: 400;
@@ -60,8 +63,8 @@
     content: "";
 
     position: absolute;
-    top: 16px;
-    left: 0;
+    top: 17px;
+    left: 5px;
 
     display: block;
 
@@ -78,11 +81,11 @@
   align-items: center;
 
   width: 100%;
-  max-width: 406px;
+  max-width: 407px;
   min-height: 55px;
 
-  margin-top: 38px;
-  margin-left: 94px;
+  margin-top: 44px;
+  margin-left: 99px;
 
   font-size: 16px;
   font-weight: 700;
@@ -106,15 +109,37 @@
 
 .main-screen__image-box {
   position: relative;
-  margin-left: 70px;
+
+  width: 0;
+  height: 0;
+
+  margin-left: 40px;
 }
 
 .main-screen__image {
   position: absolute;
-  top: 0;
-  left: 0;
 
-  display: block;
+
+  &--background {
+    top: 14px;
+    left: 33px;
+
+    width: 611px;
+    height: 487px;
+  }
+
+  &--main {
+    top: 0;
+    left: 20px;
+
+    width: 705px;
+    height: 515px;
+  }
+}
+
+.main-screen__image img {
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -151,6 +176,8 @@
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) {
   .main-screen {
+    min-height: 556px;
+    margin-top: 58px;
     padding-left: 88px;
   }
 
@@ -168,37 +195,44 @@
   }
 
   .main-screen__description {
-    padding-left: 48px;
+    margin-top: 29px;
+    padding-left: 50px;
 
     font-size: 18px;
     line-height: 28px;
 
 
     &::before {
+      top: 16px;
+      left: 3px;
+
       width: 33px;
     }
   }
 
   .main-screen__callback-button {
-    margin-left: 48px;
-  }
+    max-width: 379px;
 
-  .main-screen__image-box {
-    margin-left: 0;
+    margin-top: 55px;
+    margin-left: 51px;
   }
 
   .main-screen__image {
+    &--background {
+      top: -48px;
+      left: -201px;
+
+
+      width: 482px;
+      height: auto;
+    }
+
     &--main {
-      top: -100px;
-      left: -100px;
+      top: -17px;
+      left: -148px;
 
       width: 465px;
       height: 340px;
-    }
-
-    &--background {
-      top: -160px;
-      left: -200px;
     }
   }
 }
@@ -207,6 +241,9 @@
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
   .main-screen {
+    min-height: 419px;
+
+    margin-top: 171px;
     padding-right: 15px;
     padding-left: 15px;
   }
@@ -217,6 +254,9 @@
   }
 
   .main-screen__description {
+    margin-top: 26px;
+    padding-left: 51px;
+
     font-size: 16px;
     line-height: 25px;
   }
@@ -231,18 +271,22 @@
     }
   }
 
+  .main-screen__image-box {
+    margin-left: 0;
+  }
+
   .main-screen__image {
     &--main {
-      top: -140px;
-      left: -280px;
+      top: -136px;
+      left: -279px;
 
       width: 301px;
       height: 220px;
     }
 
     &--background {
-      top: -180px;
-      left: -140px;
+      top: -157px;
+      left: -136px;
 
       width: 456px;
       height: 366px;

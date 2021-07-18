@@ -1,15 +1,17 @@
+.site-main-content {
+  overflow-x: hidden;
+}
+
 .site-main-content__company-info {
   padding-top: 110px;
-  padding-bottom: 110px;
-
+  padding-bottom: 99px;
   background-color: $white;
-  border-top: 1px solid transparent;
 }
 
 .site-main-content__callback-form {
-  margin-top: 126px;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  margin-top: 127px;
+  padding-top: 91px;
+  padding-bottom: 113px;
 
   background-color: $main-site-color;
 }
@@ -24,7 +26,14 @@
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) {
   .site-main-content__company-info {
-    padding-top: 60px;
+    padding-top: 54px;
+    padding-bottom: 80px;
+  }
+
+  .site-main-content__callback-form {
+    margin-top: 78px;
+    padding-top: 80px;
+    padding-bottom: 104px;
   }
 }
 
@@ -33,5 +42,12 @@
 @media (max-width: $width--tablet) {
   .site-main-content__company-info {
     padding-top: 40px;
+    padding-bottom: 65px;
+  }
+
+  .site-main-content__callback-form {
+    margin-top: 64px;
+    padding-top: 30px;
+    padding-bottom: 41px;
   }
 }

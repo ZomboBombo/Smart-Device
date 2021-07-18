@@ -41,22 +41,23 @@
     justify-content: space-between;
 
     padding-right: 24px;
-    padding-left: 24px;
+    padding-left: 26px;
 
     border-bottom: 1px solid rgba(#626962, 0.2);
 
 
     &--first {
       margin: 0;
-      padding-top: 24px;
-      padding-bottom: 26px;
+      padding-top: 19px;
+      padding-bottom: 25px;
     }
 
     &--last {
       max-width: 100%;
 
       padding-top: 38px;
-      padding-bottom: 34px;
+      padding-right: 37px;
+      padding-bottom: 36px;
     }
   }
 }

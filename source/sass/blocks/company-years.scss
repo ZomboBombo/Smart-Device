@@ -8,6 +8,9 @@
 
   &--top {
     display: none;
+
+    margin: 0;
+    padding: 0;
   }
 
   &--bottom {
@@ -27,10 +30,24 @@
   .company-years {
     &--top {
       display: block;
+
+      padding-top: 16px;
+      padding-left: 16px;
     }
 
     &--bottom {
       display: none;
+    }
+  }
+}
+
+
+// *** ширина вьюпорта "Мобильный" ***
+@media (max-width: $width--tablet) {
+  .company-years {
+    &--top {
+      padding-top: 26px;
+      padding-left: 2px;
     }
   }
 }

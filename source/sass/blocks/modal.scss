@@ -7,12 +7,13 @@
 
   &--overlay {
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 1;
 
     flex-direction: column;
-
-    width: 100vw;
-    height: 100vh;
 
     padding: 0 10px;
 
@@ -30,9 +31,9 @@
     min-height: 605px;
 
     margin: auto;
-    padding-top: 34px;
+    padding-top: 30px;
     padding-right: 40px;
-    padding-bottom: 34px;
+    padding-bottom: 30px;
     padding-left: 40px;
 
     background-color: $main-site-color;
@@ -41,8 +42,8 @@
 
 .modal__close-button-box {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 16px;
+  right: 18px;
 
   width: auto;
   height: auto;

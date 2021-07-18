@@ -80,6 +80,8 @@
   }
 
   .accordeon-section .accordeon-section__tab {
+    margin-top: 31px;
+
     &--js-active {
       display: none;
     }

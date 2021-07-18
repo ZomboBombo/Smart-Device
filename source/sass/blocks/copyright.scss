@@ -88,8 +88,9 @@
   }
 
   .copyright__wrapper {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-top: 20px;
+    padding-right: 26px;
+    padding-left: 26px;
   }
 }
 
@@ -98,5 +99,14 @@
 @media (max-width: $width--tablet) {
   .copyright__wrapper {
     justify-content: center;
+    padding-top: 28px;
+  }
+
+  .copyright__column {
+    margin-bottom: 21px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

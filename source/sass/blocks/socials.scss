@@ -58,6 +58,7 @@
 
   .socials__list {
     margin-top: 0;
+    padding-top: 5px;
   }
 }
 
@@ -69,6 +70,11 @@
     align-items: center;
 
     padding-top: 46px;
-    padding-bottom: 54px;
+    padding-bottom: 48px;
+  }
+
+  .socials__list {
+    margin-top: 32px;
+    padding-top: 0;
   }
 }

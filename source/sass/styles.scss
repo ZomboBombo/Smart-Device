@@ -50,8 +50,10 @@
 // --- 3.7) стили Формы обратной связи ---
 @import "blocks/callback-form.scss";
 
+
 /* **********************************
 *** 4. Модальные окна и Аккордеон ***
 ********************************** */
+@import "blocks/body-scroll-disabled.scss";
 @import "blocks/modal.scss";
 @import "blocks/accordeon-section.scss";

@@ -1,13 +1,14 @@
 .about-company {
   display: flex;
+  margin-top: 104px;
+}
 
-  margin-top: 110px;
-  padding-right: 20px;
-  padding-left: 20px;
+.about-company img {
+  margin-top: 9px;
 }
 
 .about-company__wrapper {
-  margin-left: 40px;
+  margin-left: 59px;
 }
 
 .about-company__description-box {
@@ -49,7 +50,7 @@
 
   max-width: 180px;
 
-  margin-top: 30px;
+  margin-top: 40px;
 
   color: $main-site-color;
   text-decoration: none;
@@ -85,14 +86,35 @@
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) {
   .about-company {
-    margin-top: 60px;
+    margin-top: 56px;
     padding-right: 25px;
     padding-left: 25px;
+  }
+
+  .about-company__wrapper {
+    margin-left: 48px;
+  }
+
+  .about-company__description-box {
+    margin-top: 25px;
+    padding-left: 3px;
   }
 
   .about-company h2 {
     font-size: 32px;
     line-height: 45px;
+  }
+
+  .about-company img {
+    width: 137px;
+    height: auto;
+
+    margin-top: 3px;
+  }
+
+  .about-company__details-link {
+    margin-top: 41px;
+    margin-left: 3px;
   }
 }
 
@@ -100,8 +122,9 @@
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
   .about-company {
+    margin-top: 57px;
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 14px;
   }
 
   .about-company img {
@@ -113,7 +136,7 @@
   }
 
   .about-company__description-box {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .about-company h2 {
@@ -122,6 +145,10 @@
   }
 
   .about-company__wrapper p {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  .about-company__details-link {
+    margin-top: 29px;
   }
 }

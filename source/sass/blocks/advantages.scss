@@ -7,8 +7,6 @@
   grid-row-gap: 30px;
 
   margin: 0 auto;
-  padding-right: 20px;
-  padding-left: 20px;
 }
 
 .advantages__list li {
@@ -21,7 +19,7 @@
   padding-top: 40px;
   padding-right: 42px;
   padding-bottom: 49px;
-  padding-left: 45px;
+  padding-left: 41px;
 
   border: 1px solid #ebebeb;
   border-left: 3px solid $main-site-color;
@@ -36,7 +34,7 @@
 }
 
 .advantages__list span {
-  margin-top: 24px;
+  margin-top: 20px;
 
   font-family: $additional-font;
   font-size: 24px;
@@ -88,19 +86,30 @@
     padding-left: 25px;
   }
 
+  .advantages__list {
+    grid-template-rows: repeat(2, minmax(min-content, max-content));
+    grid-column-gap: 28px;
+  }
+
   .advantages__list li {
+    min-height: 232px;
+
     padding-top: 24px;
     padding-right: 22px;
-    padding-bottom: 34px;
+    padding-bottom: 20px;
     padding-left: 25px;
   }
 
   .advantages__list span {
+    margin-top: 7px;
+
     font-size: 24px;
     line-height: 34px;
   }
 
   .advantages__list p {
+    margin-top: 8px;
+
     font-size: 16px;
     line-height: 22px;
   }
@@ -119,7 +128,18 @@
     grid-row-gap: 20px;
   }
 
+  .advantages__list li {
+    min-height: 235px;
+
+    padding-top: 22px;
+    padding-right: 16px;
+    padding-bottom: 25px;
+    padding-left: 22px;
+  }
+
   .advantages__list span {
+    margin-top: 12px;
+
     font-size: 20px;
     line-height: 28px;
   }
