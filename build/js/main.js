@@ -167,6 +167,11 @@ window.characterLimiter = (() => {
 ===================================================================================================================================
 */
 window.maskForInputs = (() => {
+  // ---------- КОНСТАНТЫ -----------
+  const MIN_PHONE_LENGHT = 11;
+  const EMPTY = '';
+
+
   // --------- DOM-элементы ---------
   const telInputs = document.querySelectorAll('input[type="tel"]');
 
@@ -174,8 +179,50 @@ window.maskForInputs = (() => {
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
+
+  /*
+  *** Ф-ция для обработчика события ИЗМЕНЕНИЯ содержимого
+  *** поля ввода номера телефона
+  */
+  const onInputChange = (inputElement) => {
+    const regExpForInput = /^\d$/;
+    const valueOfInput = inputElement.value;
+    const inputValidityMessage = 'The phone number is incomplete. Please enter your phone number.';
+
+    // --- Счётчик цифровых символов ---
+    let truePhoneLength = 0;
+
+    /*
+    *** Цикл перебирает строку посимвольно:
+    *** ---
+    *** ЕСЛИ текущий символ соответствует установленному RegExp,
+    *** ТОГДА счётчик увеличивается на один.
+    */
+    for (let i = 0; i < valueOfInput.length; i++) {
+      if (valueOfInput.charAt(i).match(regExpForInput)) {
+        truePhoneLength++;
+      }
+    }
+
+    /*
+    *** ЕСЛИ количество цифровых символов в номере телефона
+    *** меньше установленной Минимальной длины,
+    *** ТОГДА выведется валидационное сообщение
+    */
+    if (truePhoneLength < MIN_PHONE_LENGHT) {
+      inputElement.setCustomValidity(inputValidityMessage);
+    } else {
+      inputElement.setCustomValidity(EMPTY);
+    }
+  };
+
+
+  // *** Установка обработчика события и маски на все поля ввода номера телефона ***
   for (let telInput of telInputs) {
-    Inputmask({ "mask": "+7 (999) 999-99-99" }).mask(telInput);
+    Inputmask({ 'mask': '+7 (999) 999-99-99' }).mask(telInput);
+    telInput.addEventListener('change', () => {
+      onInputChange(telInput);
+    });
   }
 })();
 /*
@@ -207,7 +254,8 @@ window.modal = (() => {
 
   const modals = body.querySelectorAll('.modal');
   const modalOverlay = body.querySelector('#modal-overlay');
-  const formNameField = modalOverlay.querySelector('#callback-popup-customer-name');
+  const modalForm = modalOverlay.querySelector('form');
+  const formNameField = modalForm.querySelector('#callback-popup-customer-name');
   const callbackButton = body.querySelector('#callback-button');
   const callbackPopupCloseButton = body.querySelector('#callback-popup-close');
 
@@ -256,6 +304,8 @@ window.modal = (() => {
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
+      modalForm.reset();
+
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
       document.removeEventListener('keydown', onEscPress);
@@ -282,6 +332,8 @@ window.modal = (() => {
         body.classList.remove('body-scroll-disabled');
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
+
+      modalForm.reset();
 
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
@@ -310,6 +362,8 @@ window.modal = (() => {
       body.classList.remove('body-scroll-disabled');
       window.scrollTo(PAGE_TOP, body.dataset.scrollY);
     }
+
+    modalForm.reset();
 
     callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
     modalOverlay.removeEventListener('click', onModalOverlayClick);
@@ -351,4 +405,66 @@ window.modal = (() => {
 })();
 /*
 *** --------------------------------------------- Модуль логики Модального окна: КОНЕЦ --------------------------------------------
+*/
+
+'use strict';
+
+/*
+===================================================================================================================================
+--------------------------------------- Модуль сохранения данных Формы в localStorage: НАЧАЛО -------------------------------------
+===================================================================================================================================
+*/
+window.saveToLocalStorage = (() => {
+  // ---------- КОНСТАНТЫ -----------
+  const FormField = {
+    TYPE_TEXT: 'text',
+    TYPE_TEL: 'tel',
+    TAG_TEXTAREA: 'textarea'
+  };
+
+
+  // --------- DOM-элементы ---------
+  const formInputs = document.querySelectorAll('form input');
+  const formTextareas = document.querySelectorAll('form textarea');
+
+
+  /*
+  ======================== ОСНОВНАЯ ЛОГИКА ========================
+  */
+
+  /*
+  *** Ф-ция для обработчика события ИЗМЕНЕНИЯ значения
+  *** в поле ввода
+  */
+  const onFormFieldChange = (fieldToSave) => {
+    localStorage.setItem(fieldToSave.name, fieldToSave.value);
+  };
+
+
+  // *** Ф-ция для СОХРАНЕНИЯ значений полей Формы в `localStorage` ***
+  const saveValueToLocalStorage = (formFields) => {
+    for (let formFieldToSave of formFields) {
+      const typeOfField = formFieldToSave.getAttribute('type');
+      const tagNameOfField = formFieldToSave.tagName.toLowerCase();
+
+      if (typeOfField === FormField.TYPE_TEXT || typeOfField === FormField.TYPE_TEL || tagNameOfField === FormField.TAG_TEXTAREA) {
+        formFieldToSave.addEventListener('change', () => {
+          onFormFieldChange(formFieldToSave);
+        });
+      }
+    }
+  };
+
+
+  /*
+  *** Вызовы ф-ции СОХРАНЕНИЯ значений в `localStorage`
+  *** для каждой коллекции элементов ввода
+  */
+  saveValueToLocalStorage(formInputs);
+  saveValueToLocalStorage(formTextareas);
+})();
+/*
+===================================================================================================================================
+--------------------------------------- Модуль сохранения данных Формы в localStorage: КОНЕЦ --------------------------------------
+===================================================================================================================================
 */
