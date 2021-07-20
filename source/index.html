@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Smart Device</title>
     <link rel="stylesheet" type="text/css" href="css/styles.min.css">
-    <link rel="preload" href="fonts/PTMono-Regular.woff2" as="font">
-    <link rel="preload" href="fonts/RobotoCondensed-Bold.woff2" as="font">
-    <link rel="preload" href="fonts/RobotoCondensed-Regular.woff2" as="font">
+    <link rel="preload" href="fonts/PTMono-Regular.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/RobotoCondensed-Bold.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/RobotoCondensed-Regular.woff2" as="font" crossorigin>
   </head>
   <body>
     <!--
@@ -214,7 +214,7 @@
           <h2 class="visually-hidden">Форма обратной связи</h2>
 
           <div class="callback-form__column">
-            <img src="img/decorative-triangles.svg" class="callback-form__image callback-form__image--background" alt="Декоративный фон">
+            <img src="img/decorative-triangles.svg" width="611" height="487" class="callback-form__image callback-form__image--background" alt="Декоративный фон">
 
             <picture>
               <source type="image/webp" srcset="img/paper-airplane.webp, img/paper-airplane@2x.webp 2x">
@@ -229,16 +229,15 @@
             <p class="callback-form__description">Мы проконсультируем Вас бесплатно</p>
 
             <div class="callback-form__wrapper">
-              <form action="" method="post" enctype="multipart/form-data">
+              <form action="https://echo.htmlacademy.ru/" method="post" enctype="multipart/form-data">
                 <fieldset>
                   <legend class="visually-hidden">Контактные данные</legend>
 
                   <input type="text" name="customer-name" id="callback-form-customer-name" title="Введите Ваше имя" aria-label="Введите Ваше имя" placeholder="Имя" required>
-
                   <input type="tel" name="customer-phone" id="callback-form-customer-phone" title="Введите номер телефона" aria-label="Введите номер телефона" placeholder="Телефон" required>
                 </fieldset>
 
-                <textarea id="callback-form-customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваш вопрос"></textarea>
+                <textarea id="callback-form-customer-question" name="customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваш вопрос"></textarea>
 
                 <div class="callback-form__submit-box">
                   <input type="checkbox" name="privacy-policy" class="visually-hidden" id="callback-form-privacy-policy" checked required>
@@ -294,11 +293,9 @@
 
         <div class="service-info__column service-info__column--last">
           <section class="accordeon-section site-navigation">
-            <div class="service-info__title-box">
-              <h3 class="footer-title">Разделы сайта</h3>
+            <h3 class="visually-hidden">Навигация по сайту</h3>
 
-              <button type="button" class="accordeon-section__toggle-button" title="Раскрыть «Разделы сайта»" aria-label="Раскрыть «Разделы сайта»">Развернуть</button>
-            </div>
+            <button type="button" class="footer-title accordeon-section__toggle-button" title="Раскрыть «Разделы сайта»" aria-label="Раскрыть «Разделы сайта»">Разделы сайта</button>
 
             <nav class="accordeon-section__tab site-navigation__menu">
               <ul>
@@ -334,13 +331,9 @@
           <section class="accordeon-section contacts">
             <h3 class="visually-hidden">Контакты</h3>
 
-            <div class="service-info__title-box">
-              <p class="footer-title contacts__title">Наш офис</p>
+            <button type="button" class="footer-title accordeon-section__toggle-button" title="Раскрыть «Контакты»" aria-label="Раскрыть «Контакты»">Наш офис</button>
 
-              <button type="button" class="accordeon-section__toggle-button" title="Раскрыть «Контакты»" aria-label="Раскрыть «Контакты»">Развернуть</button>
-            </div>
-
-            <div class="accordeon-section__tab">
+            <div class="accordeon-section__tab contacts__description">
               <span>г. Мытищи, Олимпийский проспект,&nbsp;д.10</span>
 
               <ul class="contacts__phones-list">
@@ -387,23 +380,22 @@
       **********************
     -->
     <section class="modal modal--overlay" id="modal-overlay">
-      <div class="modal modal--window">
+      <div class="callback-form callback-form--modal-window modal modal--window">
         <h2 class="visually-hidden">Попап: Форма обратной связи</h2>
 
         <span class="callback-form__title callback-form__title--modal-window">Закажите звонок</span>
         <p class="callback-form__description callback-form__description--modal-window">Оставьте контакты, мы проконсультируем вас&nbsp;бесплатно в удобное время</p>
 
         <div class="callback-form__wrapper callback-form__wrapper--modal-window">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="https://echo.htmlacademy.ru/" method="post" enctype="multipart/form-data">
             <fieldset>
               <legend class="visually-hidden">Контактные данные</legend>
 
-              <input type="text" name="customer-name" id="callback-popup-customer-name" title="Введите Ваше имя" aria-label="Введите Ваше имя" placeholder="Имя" required>
-
-              <input type="tel" name="customer-phone" id="callback-popup-customer-phone" title="Введите номер телефона" aria-label="Введите номер телефона" placeholder="Телефон" required>
+              <input type="text" name="popup-customer-name" id="callback-popup-customer-name" title="Введите Ваше имя" aria-label="Введите Ваше имя" placeholder="Имя" required>
+              <input type="tel" name="popup-customer-phone" id="callback-popup-customer-phone" title="Введите номер телефона" aria-label="Введите номер телефона" placeholder="Телефон" required>
             </fieldset>
 
-            <textarea id="callback-popup-customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваш вопрос"></textarea>
+            <textarea id="callback-popup-customer-question" name="popup-customer-question" title="Введите Ваш вопрос" aria-label="Введите Ваш вопрос" placeholder="Ваш вопрос"></textarea>
 
             <div class="callback-form__submit-box callback-form__submit-box--modal-window">
               <input type="checkbox" name="privacy-policy" class="visually-hidden" id="callback-popup-privacy-policy" checked required>
