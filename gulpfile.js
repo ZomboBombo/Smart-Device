@@ -97,8 +97,8 @@ gulp.task('images', () => {
   return pipeline(
     gulp.src('source/img/**/*.{png,jpg,svg}'),
     imagemin([
-      imagemin.optipng({ optimizationLevel: 3 }),
-      imagemin.jpegtran({ progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
+      imagemin.mozjpeg({quality: 90, progressive: true }),
       imagemin.svgo()
     ]),
     gulp.dest('source/img')
