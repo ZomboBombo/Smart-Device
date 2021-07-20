@@ -19,6 +19,7 @@ body {
   flex-direction: column;
 
   width: 100vw;
+  min-width: $width--mobile;
   min-height: 100vh;
 
   font-family: $default-font;
