@@ -21,7 +21,8 @@ window.modal = (() => {
 
   const modals = body.querySelectorAll('.modal');
   const modalOverlay = body.querySelector('#modal-overlay');
-  const formNameField = modalOverlay.querySelector('#callback-popup-customer-name');
+  const modalForm = modalOverlay.querySelector('form');
+  const formNameField = modalForm.querySelector('#callback-popup-customer-name');
   const callbackButton = body.querySelector('#callback-button');
   const callbackPopupCloseButton = body.querySelector('#callback-popup-close');
 
@@ -70,6 +71,8 @@ window.modal = (() => {
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
+      modalForm.reset();
+
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
       document.removeEventListener('keydown', onEscPress);
@@ -96,6 +99,8 @@ window.modal = (() => {
         body.classList.remove('body-scroll-disabled');
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
+
+      modalForm.reset();
 
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
@@ -124,6 +129,8 @@ window.modal = (() => {
       body.classList.remove('body-scroll-disabled');
       window.scrollTo(PAGE_TOP, body.dataset.scrollY);
     }
+
+    modalForm.reset();
 
     callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
     modalOverlay.removeEventListener('click', onModalOverlayClick);
