@@ -2,6 +2,7 @@
   position: relative;
   display: block;
   width: auto;
+  min-height: 256px;
   margin: 0 auto;
   text-decoration: none;
   background-color: #c4c4c4;
@@ -66,7 +67,9 @@
 .product-card img {
   width: 100%;
   max-width: 370px;
+  min-width: 290px;
   height: auto;
+  min-height: 256px;
 }
 
 
@@ -110,6 +113,10 @@
 
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
+  .product-card a {
+    max-width: 290px;
+  }
+
   .product-card h3 {
     top: 20px;
     left: 35px;
