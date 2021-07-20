@@ -3,7 +3,7 @@
   grid-template-columns: repeat(2, auto);
   grid-column-gap: 73px;
 
-  padding-top: 26px;
+  padding-top: 19px;
 }
 
 .site-navigation__menu ul {
@@ -66,12 +66,12 @@
 @media (max-width: $width--tablet) {
   .site-navigation {
     width: 100%;
-
-    padding-top: 28px;
-    padding-right: 15px;
-    padding-bottom: 28px;
-    padding-left: 15px;
-
+    padding: 0;
     border-bottom: 1px solid rgba(#626962, 0.2);
+  }
+
+  .site-navigation__menu {
+    padding-top: 0;
+    padding-bottom: 28px;
   }
 }

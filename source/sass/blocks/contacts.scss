@@ -2,9 +2,12 @@
   margin-left: auto;
 }
 
+.contacts__description {
+  margin-top: 20px;
+}
+
 .contacts span {
   display: block;
-  margin-top: 26px;
 
   font-size: 15px;
   font-weight: 400;
@@ -57,14 +60,10 @@
 @media (max-width: $width--tablet) {
   .contacts {
     width: 100%;
-
-    padding-top: 27px;
-    padding-right: 15px;
-    padding-bottom: 27px;
-    padding-left: 15px;
+    padding: 0;
   }
 
-  .contacts span {
+  .contacts__description {
     margin-top: 0;
   }
 }

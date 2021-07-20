@@ -1,16 +1,16 @@
 .accordeon-section__toggle-button {
   position: relative;
 
-  display: none;
+  width: 100%;
 
-  width: 16px;
-  height: 16px;
-
-  font-size: 0;
+  text-align: left;
 
   background-color: transparent;
   border: none;
-  cursor: pointer;
+
+  $properties-for-transition: color, background-color, opacity;
+
+  @include transition-settings($properties-for-transition);
 
 
   &::before,
@@ -19,11 +19,11 @@
 
     position: absolute;
     top: 50%;
-    left: 50%;
+    right: 15px;
 
-    display: block;
+    display: none;
 
-    width: 100%;
+    width: 16px;
     height: 1px;
 
     background-color: #c4c4c4;
@@ -34,34 +34,18 @@
   }
 
   &::before {
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
   }
 
   &::after {
-    transform: translate(-50%, -50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
   }
 }
 
 .accordeon-section__toggle-button--tab-open {
   &::after {
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
   }
-}
-
-
-/*
-*** Стили для интерактивности ***
-*/
-.accordeon-section__toggle-button:hover::before,
-.accordeon-section__toggle-button:hover::after,
-.accordeon-section__toggle-button:focus::before,
-.accordeon-section__toggle-button:focus::after {
-  background-color: $main-site-color;
-}
-
-.accordeon-section__toggle-button:active::before,
-.accordeon-section__toggle-button:active::after {
-  opacity: 0.7;
 }
 
 
@@ -74,13 +58,25 @@
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
   .accordeon-section__toggle-button {
-    &--js-active {
+    min-height: 78px;
+  }
+
+  .accordeon-section__toggle-button--js-active {
+    padding: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    cursor: pointer;
+
+
+    &::before,
+    &::after {
       display: block;
     }
   }
 
   .accordeon-section .accordeon-section__tab {
-    margin-top: 31px;
+    padding-bottom: 27px;
 
     &--js-active {
       display: none;
@@ -89,5 +85,27 @@
     &--tab-open {
       display: block;
     }
+  }
+
+
+  /*
+  *** Стили для интерактивности ***
+  */
+  .accordeon-section__toggle-button:hover,
+  .accordeon-section__toggle-button:focus {
+    color: $white;
+    background-color: $main-site-color;
+  }
+
+  .accordeon-section__toggle-button:hover::before,
+  .accordeon-section__toggle-button:hover::after,
+  .accordeon-section__toggle-button:focus::before,
+  .accordeon-section__toggle-button:focus::after {
+    background-color: $white;
+  }
+
+  .accordeon-section__toggle-button:active,
+  .accordeon-section__toggle-button:active {
+    opacity: 0.7;
   }
 }
