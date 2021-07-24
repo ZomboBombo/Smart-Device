@@ -13,7 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-// === МОБИЛЬНАЯ ВЕРСИЯ ===
 body {
   display: flex;
   flex-direction: column;
@@ -50,6 +49,7 @@ footer {
   height: 1px;
 
   position: absolute;
+
   margin: -1px;
   padding: 0;
 
