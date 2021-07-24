@@ -2,7 +2,7 @@
   @include markerless;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(290px, 1fr));
   grid-column-gap: 30px;
   grid-row-gap: 30px;
 
@@ -80,7 +80,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--desktop) {
+@media (max-width: $width--tablet) {
   .advantages {
     padding-right: 25px;
     padding-left: 25px;
@@ -102,22 +102,19 @@
 
   .advantages__list span {
     margin-top: 7px;
-
-    font-size: 24px;
-    line-height: 34px;
+    min-width: 297px;
   }
 
   .advantages__list p {
     margin-top: 8px;
-
-    font-size: 16px;
-    line-height: 22px;
   }
 }
 
 
+
+
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .advantages {
     padding-right: 14px;
     padding-left: 14px;

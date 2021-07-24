@@ -4,29 +4,36 @@
 
 .copyright__wrapper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 
   min-height: 52px;
 
   padding-top: 14px;
-  padding-right: 8px;
+  padding-right: 20px;
   padding-bottom: 14px;
-  padding-left: 4px;
+  padding-left: 16px;
 }
 
 .copyright__column {
   display: inline-flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   &--first {
     width: 100%;
-    max-width: 816px;
+    max-width: 835px;
+
+    margin-right: 40px;
+  }
+
+  &--second {
+    max-width: 500px;
   }
 }
 
 .copyright__column p {
   margin: 0;
+  margin-right: 20px;
   padding: 0;
 
   font-size: 13px;
@@ -37,18 +44,17 @@
   text-transform: uppercase;
 }
 
+.copyright__column--second p {
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
 .copyright__column a {
   color: $footer-gray--translucent;
   text-decoration: none;
 }
 
-.copyright__column .copyright__description--years {
-  margin-left: 74px;
-}
-
-.copyright__column .copyright__privacy-policy {
-  margin-left: auto;
-}
 
 
 /*
@@ -81,16 +87,16 @@
     display: none;
   }
 
-  .copyright__column {
-    &--first {
-      width: auto;
-    }
-  }
-
   .copyright__wrapper {
     padding-top: 20px;
     padding-right: 26px;
     padding-left: 26px;
+  }
+
+  .copyright__column {
+    &--first {
+      width: auto;
+    }
   }
 }
 
@@ -98,12 +104,16 @@
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
   .copyright__wrapper {
+    flex-wrap: wrap;
     justify-content: center;
     padding-top: 28px;
   }
 
   .copyright__column {
     margin-bottom: 21px;
+    padding-right: 21px;
+    padding-left: 21px;
+
 
     &:last-child {
       margin-bottom: 0;

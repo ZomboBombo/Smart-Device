@@ -50,6 +50,14 @@
 
 
 /*
+*** Стили для интерактивности ***
+*/
+.accordeon-section__toggle-button:focus {
+  outline: none;
+}
+
+
+/*
 ==================================
 --------- МЕДИАВЫРАЖЕНИЯ ---------
 ==================================
@@ -76,6 +84,8 @@
   }
 
   .accordeon-section .accordeon-section__tab {
+    padding-right: 14px;
+    padding-left: 14px;
     padding-bottom: 27px;
 
     &--js-active {

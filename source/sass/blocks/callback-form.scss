@@ -78,6 +78,16 @@
   $properties-for-transition: background-color;
 
   @include transition-settings($properties-for-transition);
+
+
+  /*
+  *** Настройка для корректного отображения placeholder'ов
+  *** в Webkit-браузерах
+  */
+  &::-webkit-input-placeholder {
+    color: $white;
+    opacity: 0.6;
+  }
 }
 
 .callback-form__wrapper input {
@@ -105,13 +115,21 @@
   margin-top: 37px;
 }
 
-.callback-form__privacy-policy-label {
+.callback-form__privacy-policy-box {
   position: relative;
 
   order: 2;
 
   width: 100%;
   max-width: 262px;
+}
+
+.callback-form__privacy-policy-label {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
 
   padding-top: 2px;
   padding-left: 32px;
@@ -269,6 +287,15 @@
 .callback-form__wrapper textarea:focus {
   color: $main-site-color;
   background-color: rgba($white, 1);
+
+
+  /*
+  *** Настройка для корректного отображения placeholder'ов
+  *** в Webkit-браузерах
+  */
+  &::-webkit-input-placeholder {
+    color: $main-site-color;
+  }
 }
 
 .callback-form__submit-box button:hover,

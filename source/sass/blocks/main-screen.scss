@@ -5,13 +5,12 @@
   min-height: 620px;
 
   margin-top: 173px;
-  padding-right: 20px;
 }
 
 .main-screen__decorative-link {
   position: absolute;
   bottom: 128px;
-  left: -33px;
+  left: -21px;
   transform: rotate(-90deg);
   z-index: 2;
 
@@ -86,6 +85,7 @@
 
   margin-top: 44px;
   margin-left: 99px;
+  margin-bottom: 40px;
 
   font-size: 16px;
   font-weight: 700;
@@ -173,8 +173,24 @@
 ==================================
 */
 
-// *** ширина вьюпорта "Планшет" ***
+// *** ширина вьюпорта до брейкпоинта для "Десктопа" ***
 @media (max-width: $width--desktop) {
+  .main-screen__image {
+    &--background {
+      top: 150px;
+      left: -400px;
+    }
+
+    &--main {
+      top: -135px;
+      left: -200px;
+    }
+  }
+}
+
+
+// *** ширина вьюпорта "Планшет" ***
+@media (max-width: $width--tablet) {
   .main-screen {
     min-height: 556px;
     margin-top: 58px;
@@ -239,7 +255,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .main-screen {
     min-height: 419px;
 

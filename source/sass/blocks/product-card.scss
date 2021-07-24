@@ -113,12 +113,13 @@
 
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--tablet) {
-  .product-card a {
-    max-width: 290px;
-  }
-
   .product-card h3 {
     top: 20px;
     left: 35px;
+  }
+
+  .product-card img {
+    max-height: 256px;
+    object-fit: cover;
   }
 }

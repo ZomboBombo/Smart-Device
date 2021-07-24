@@ -1,3 +1,14 @@
+/*
+*** Данная настройка отступов необходима для случая,
+*** когда ширина вьюпорта становится достаточно узкой
+*** и происходит перенос секции "Наш офис" под
+*** секцию "Разделы сайта"
+*/
+.site-navigation {
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
 .site-navigation__menu {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -51,7 +62,7 @@
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) {
   .site-navigation {
-    margin-left: 0;
+    margin: 0;
   }
 
   .site-navigation__menu {
@@ -72,6 +83,5 @@
 
   .site-navigation__menu {
     padding-top: 0;
-    padding-bottom: 28px;
   }
 }

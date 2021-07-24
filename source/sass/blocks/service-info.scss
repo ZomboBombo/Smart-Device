@@ -3,9 +3,9 @@
   justify-content: space-between;
 
   padding-top: 65px;
-  padding-right: 8px;
-  padding-bottom: 57px;
-  padding-left: 4px;
+  padding-right: 20px;
+  padding-bottom: 28px;
+  padding-left: 16px;
 }
 
 .service-info__column {
@@ -13,10 +13,12 @@
   flex-wrap: wrap;
 
   &--first {
-    margin-right: 12px;
+    margin-right: 40px;
   }
 
   &--last {
+    justify-content: space-between;
+
     width: 100%;
     max-width: 990px;
   }
