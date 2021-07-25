@@ -1,4 +1,19 @@
 .site-header {
+  background-image: url("../img/background-header.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  // *** Для устранения бага с картинками в Webkit-браузерах ***
+  /*
+  *** Во всех браузерах на движке «Webkit» всплывает странный баг:
+  *** картинки с "position: absolute;" в режиме ресайза страницы
+  *** определяются так, будто они до сих пор находятся в общем потоке.
+  */
+  overflow-x: hidden;
+}
+
+.site-header__top {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -119,11 +134,19 @@
 ==================================
 */
 
+// *** Настройки для ретины ***
+@media (min-resolution: 2dppx) {
+  .site-header {
+    background-image: url("../img/background-header@2x.png");
+  }
+}
+
+
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--desktop) {
-  .site-header {
+  .site-header__top {
     margin-top: 20px;
-    padding-right: 25px;
+    padding-right: 6px;
     padding-left: 25px;
   }
 
@@ -162,8 +185,8 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
-  .site-header {
+@media (max-width: $width--layout-intermediate) {
+  .site-header__top {
     margin-top: 15px;
     padding-right: 17px;
     padding-left: 17px;

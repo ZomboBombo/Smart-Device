@@ -107,19 +107,16 @@
 
   .product-card img {
     max-width: 100%;
+    max-height: 256px;
+    object-fit: cover;
   }
 }
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .product-card h3 {
     top: 20px;
     left: 35px;
-  }
-
-  .product-card img {
-    max-height: 256px;
-    object-fit: cover;
   }
 }

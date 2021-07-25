@@ -89,7 +89,7 @@
 
   .copyright__wrapper {
     padding-top: 20px;
-    padding-right: 26px;
+    padding-right: 6px;
     padding-left: 26px;
   }
 
@@ -102,7 +102,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .copyright__wrapper {
     flex-wrap: wrap;
     justify-content: center;
@@ -110,6 +110,7 @@
   }
 
   .copyright__column {
+    margin: 0;
     margin-bottom: 21px;
     padding-right: 21px;
     padding-left: 21px;
@@ -118,5 +119,9 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .copyright__column p {
+    margin: 0;
   }
 }

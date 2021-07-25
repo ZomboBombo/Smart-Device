@@ -28,10 +28,6 @@ body {
   color: $white;
 
   background-color: $body-background-color;
-  background-image: url("../img/background-header.png");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: auto auto;
 
   // *** Для устранения горизонтальных скроллов в IE 11, Edge и Safari ***
   overflow-x: hidden;
@@ -57,18 +53,4 @@ footer {
 
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-
-/*
-==================================
---------- МЕДИАВЫРАЖЕНИЯ ---------
-==================================
-*/
-
-// *** Настройки для ретины ***
-@media (min-resolution: 2dppx) {
-  body {
-    background-image: url("../img/background-header@2x.png");
-  }
 }

@@ -32,7 +32,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--desktop) {
+@media (max-width: $width--tablet) {
   .service-info {
     flex-direction: column;
     padding: 0;
@@ -42,7 +42,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    padding-right: 24px;
+    padding-right: 4px;
     padding-left: 26px;
 
     border-bottom: 1px solid rgba(#626962, 0.2);
@@ -58,7 +58,7 @@
       max-width: 100%;
 
       padding-top: 38px;
-      padding-right: 37px;
+      padding-right: 17px;
       padding-bottom: 36px;
     }
   }
@@ -66,7 +66,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .service-info__column {
     padding: 0;
   }

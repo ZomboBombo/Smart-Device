@@ -82,7 +82,7 @@
 // *** ширина вьюпорта "Планшет" ***
 @media (max-width: $width--tablet) {
   .advantages {
-    padding-right: 25px;
+    padding-right: 6px;
     padding-left: 25px;
   }
 
@@ -121,7 +121,7 @@
   }
 
   .advantages__list {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(290px, 1fr);
     grid-row-gap: 20px;
   }
 

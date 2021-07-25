@@ -64,9 +64,9 @@
 */
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .accordeon-section__toggle-button {
-    min-height: 78px;
+    min-height: 71px;
   }
 
   .accordeon-section__toggle-button--js-active {
@@ -84,6 +84,7 @@
   }
 
   .accordeon-section .accordeon-section__tab {
+    padding-top: 4px;
     padding-right: 14px;
     padding-left: 14px;
     padding-bottom: 27px;

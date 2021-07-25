@@ -45,7 +45,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--desktop) {
+@media (max-width: $width--tablet) {
   .contacts {
     margin-left: 0;
   }
@@ -53,7 +53,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .contacts {
     width: 100%;
     padding: 0;

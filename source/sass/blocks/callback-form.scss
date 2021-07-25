@@ -103,7 +103,7 @@
 .callback-form__wrapper textarea {
   min-height: 154px;
   margin-top: 40px;
-  padding-top: 11px;
+  padding-top: 12px;
   resize: vertical;
 }
 
@@ -121,7 +121,7 @@
   order: 2;
 
   width: 100%;
-  max-width: 262px;
+  max-width: 272px;
 }
 
 .callback-form__privacy-policy-label {
@@ -335,7 +335,7 @@
     display: block;
 
     margin: 0 auto;
-    padding-right: 87px;
+    padding-right: 67px;
     padding-left: 87px;
   }
 
@@ -380,7 +380,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .callback-form {
     padding-right: 15px;
     padding-left: 15px;
@@ -424,6 +424,10 @@
   .callback-form__submit-box {
     flex-direction: column;
     margin-top: 23px;
+  }
+
+  .callback-form__privacy-policy-box {
+    max-width: 100%;
   }
 
   .callback-form__privacy-policy-label {

@@ -36,7 +36,7 @@
 @media (max-width: $width--desktop) {
   .goods-and-services {
     margin-top: 50px;
-    padding-right: 20px;
+    padding-right: 0;
     padding-left: 20px;
   }
 
@@ -61,7 +61,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .goods-and-services {
     padding-right: 6px;
     padding-left: 9px;

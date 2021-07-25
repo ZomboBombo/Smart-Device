@@ -60,7 +60,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--desktop) {
+@media (max-width: $width--tablet) {
   .site-navigation {
     margin: 0;
   }
@@ -74,7 +74,7 @@
 
 
 // *** ширина вьюпорта "Мобильный" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--layout-intermediate) {
   .site-navigation {
     width: 100%;
     padding: 0;
