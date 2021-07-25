@@ -19,38 +19,37 @@
       <include src="build/img/sprite_auto.svg"></include>
     </div>
 
-    <header class="container site-header">
-      <a class="logo site-header__logo">
-        <img src="img/logo-header.svg" width="202" height="52" alt="Логотип «Smart Device»">
-      </a>
-
-      <div class="site-header__contacts">
-        <ul class="site-header__contacts-list">
-          <li>
-            <a href="mailto:info@sd.ru" class="site-header__contacts-link">
-              <svg width="19" height="14" class="site-header__contacts-link-icon site-header__contacts-link-icon--mail">
-                <use xlink:href="#icon-mail"></use>
-              </svg>
-              info@sd.ru
-            </a>
-          </li>
-          <li>
-            <a href="tel:+74950005252" class="site-header__contacts-link">
-              <svg width="18" height="18" class="site-header__contacts-link-icon site-header__contacts-link-icon--phone">
-                <use xlink:href="#icon-phone"></use>
-              </svg>
-              +7 (495) 000 52 52
-            </a>
-          </li>
-        </ul>
-
-        <a href="#" class="button site-header__callback-button" id="callback-button">Заказать звонок</a>
-      </div>
-    </header>
-
-
-    <main class="site-main-content">
+    <header class="site-header">
       <h1 class="visually-hidden">Компания «Smart Device»</h1>
+
+      <section class="container site-header__top">
+        <a class="logo site-header__logo">
+          <img src="img/logo-header.svg" width="202" height="52" alt="Логотип «Smart Device»">
+        </a>
+
+        <div class="site-header__contacts">
+          <ul class="site-header__contacts-list">
+            <li>
+              <a href="mailto:info@sd.ru" class="site-header__contacts-link">
+                <svg width="19" height="14" class="site-header__contacts-link-icon site-header__contacts-link-icon--mail">
+                  <use xlink:href="#icon-mail"></use>
+                </svg>
+                info@sd.ru
+              </a>
+            </li>
+            <li>
+              <a href="tel:+74950005252" class="site-header__contacts-link">
+                <svg width="18" height="18" class="site-header__contacts-link-icon site-header__contacts-link-icon--phone">
+                  <use xlink:href="#icon-phone"></use>
+                </svg>
+                +7 (495) 000 52 52
+              </a>
+            </li>
+          </ul>
+
+          <a href="#" class="button site-header__callback-button" id="callback-button">Заказать звонок</a>
+        </div>
+      </section>
 
       <section class="container main-screen">
         <h2 class="visually-hidden">Главный экран</h2>
@@ -80,7 +79,10 @@
           </div>
         </div>
       </section>
+    </header>
 
+
+    <main class="site-main-content">
       <div class="site-main-content__company-info">
         <section class="container container--inner-box advantages" id="advantages-section">
           <h2 class="visually-hidden">Преимущества комании</h2>
