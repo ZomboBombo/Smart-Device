@@ -1,8 +1,27 @@
-.accordeon-section__toggle-button {
+.accordeon-section__title-box {
   position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.accordeon-section__title {
+  margin: 0;
+  padding: 0;
+}
+
+.accordeon-section__toggle-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
 
   width: 100%;
 
+  font-size: 0;
   text-align: left;
 
   background-color: transparent;
@@ -65,8 +84,23 @@
 
 // *** ширина вьюпорта "Мобильный" ***
 @media (max-width: $width--layout-intermediate) {
-  .accordeon-section__toggle-button {
+  .accordeon-section__title-box {
     min-height: 71px;
+  }
+
+  .accordeon-section__title {
+    display: none;
+  }
+
+  .accordeon-section__toggle-button {
+    display: block;
+
+    font-family: $additional-font;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    line-height: 16px;
+    text-transform: uppercase;
   }
 
   .accordeon-section__toggle-button--js-active {

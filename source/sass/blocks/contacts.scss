@@ -1,5 +1,5 @@
 .contacts__description {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .contacts span {
@@ -45,7 +45,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--desktop) {
   .contacts {
     margin-left: 0;
   }

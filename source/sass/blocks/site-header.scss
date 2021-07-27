@@ -10,7 +10,7 @@
   *** картинки с "position: absolute;" в режиме ресайза страницы
   *** определяются так, будто они до сих пор находятся в общем потоке.
   */
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .site-header__top {
@@ -27,15 +27,18 @@
 .site-header__contacts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
 
-  max-width: 1024px;
+  width: 100%;
+  max-width: 668px;
 }
 
 .site-header__contacts-list {
   @include markerless;
 
-  max-width: 468px;
+  width: 100%;
+  max-width: 448px;
 
   display: inline-flex;
   flex-wrap: wrap;
@@ -44,11 +47,8 @@
 }
 
 .site-header__contacts-list li {
-  margin-right: 124px;
-
-  &:last-child {
-    margin-right: 0;
-  }
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .site-header__contacts-link {
@@ -60,11 +60,21 @@
   $properties-for-transition: color, opacity;
 
   @include transition-settings($properties-for-transition);
+
+
+  &--mail {
+    padding-left: 38px;
+  }
+
+  &--phone {
+    padding-left: 34px;
+  }
 }
 
 .site-header__contacts-link-icon {
   position: absolute;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
 
   fill: $main-site-color;
@@ -72,23 +82,12 @@
   $properties-for-transition: fill;
 
   @include transition-settings($properties-for-transition);
-
-
-  &--mail {
-    left: -38px;
-  }
-
-  &--phone {
-    left: -34px;
-  }
 }
 
 .site-header__callback-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
-  margin-left: 48px;
 
   text-decoration: none;
 
@@ -154,12 +153,18 @@
     margin: 0;
   }
 
+  .site-header__contacts {
+    max-width: 72px;
+  }
+
+
   .site-header__contacts-list li {
-    margin-right: 32px;
+    margin: 0;
     padding-top: 7px;
   }
 
   .site-header__contacts-link {
+    padding: 0;
     font-size: 0;
   }
 
@@ -194,9 +199,5 @@
 
   .site-header__contacts-list {
     max-width: 268px;
-  }
-
-  .site-header__contacts-list li {
-    margin-right: 21px;
   }
 }

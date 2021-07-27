@@ -50,7 +50,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--desktop) {
   .socials {
     flex-direction: row;
     justify-content: space-between;

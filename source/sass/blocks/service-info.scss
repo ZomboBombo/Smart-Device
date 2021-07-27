@@ -32,7 +32,7 @@
 */
 
 // *** ширина вьюпорта "Планшет" ***
-@media (max-width: $width--tablet) {
+@media (max-width: $width--desktop) {
   .service-info {
     flex-direction: column;
     padding: 0;
