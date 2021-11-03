@@ -1,37 +1,15 @@
-'use strict';
+import { task, series } from 'gulp';
 
-const gulp = require('gulp');
+// --- Импортирование кастомных модулей из директории "gulp-config/tasks" ---
+import html from './gulp-config/tasks/html';
+import css from './gulp-config/tasks/css';
+import scripts from './gulp-config/tasks/scripts';
+import { sprite, imagesoptimisation } from './gulp-config/tasks/images';
+import copy from './gulp-config/tasks/copy';
+import clean from './gulp-config/tasks/clean';
 
-// --- HTML-утилиты ---
-const posthtml = require('gulp-posthtml');
-const include = require('posthtml-include');
-
-// --- CSS-утилиты ---
-const csso = require('gulp-csso');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-
-// --- Препроцессорные утилиты ---
-const sass = require('gulp-sass');
-const plumber = require('gulp-plumber');
-const sourcemap = require('gulp-sourcemaps');
-
-// --- JS-утилиты ---
-const concat = require('gulp-concat');
-const pipeline = require('readable-stream').pipeline;
-
-// --- Оптимизация изображений ---
-const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-const svgstore = require('gulp-svgstore');
-const cheerio = require('gulp-cheerio');
-
-// --- Вспомогательные утилиты ---
-const rename = require('gulp-rename');
-const del = require('del');
-
-// --- Серверные утилиты ---
-const server = require('browser-sync').create();
+// --- Импорт утилитарного модуля ---
+import Utils from './gulp-config/gulp-utils';
 
 
 /*
@@ -40,142 +18,57 @@ const server = require('browser-sync').create();
 =====================================================
 */
 
-// *** Обработка HTML-файлов ***
-gulp.task('html', () => {
-  return pipeline(
-    gulp.src('source/*.html'),
-    posthtml([
-      include()
-    ]),
-    gulp.dest('build')
-  );
-});
-
-
-// *** Обработка всех SCSS-файлов и преобразование их в CSS-файлы ***
-gulp.task('css', () => {
-  return pipeline(
-    gulp.src('source/sass/styles.scss'),
-    plumber(),
-    sourcemap.init(),
-    sass(),
-    postcss([
-      autoprefixer()
-    ]),
-    csso(),
-    rename('styles.min.css'),
-    sourcemap.write('.'),
-    gulp.dest('build/css'),
-    server.stream()
-  );
-});
-
-
-// *** Сборка всех JS-файлов ***
-
-/* --- основные скрипты — main.js --- */
-gulp.task('js', () => {
-  return pipeline(
-    gulp.src('source/js/*.js'),
-    concat('main.js'),
-    gulp.dest('build/js')
-  );
-});
-
-/* --- библиотеки — vendor.js --- */
-gulp.task('vendorjs', () => {
-  return pipeline(
-    gulp.src('source/js/vendor/*.js'),
-    concat('vendor.js'),
-    gulp.dest('build/js')
-  );
-});
-
-
-// *** Оптимизация изображений ***
-gulp.task('images', () => {
-  return pipeline(
-    gulp.src('source/img/**/*.{png,jpg,svg}'),
-    imagemin([
-      imagemin.optipng({ optimizationLevel: 5 }),
-      imagemin.mozjpeg({quality: 90, progressive: true }),
-      imagemin.svgo()
-    ]),
-    gulp.dest('source/img')
-  );
-});
-
-
-// *** Переформатирование изображений в WebP ***
-gulp.task('webp', () => {
-  return pipeline(
-    gulp.src('source/img/**/*.{png,jpg}'),
-    webp({ quality: 90 }),
-    gulp.dest('source/img')
-  );
-});
-
-
-// *** Сборка SVG-спрайта ***
-gulp.task('sprite', () => {
-  return pipeline(
-    gulp.src('source/img/**/{icon-*,htmlacademy*}.svg'),
-    cheerio({
-      run: ($) => {
-        $('[fill]').removeAttr('fill');
-      },
-      parserOptions: { xmlMode: true },
-    }),
-    svgstore({ inlineSvg: true }),
-    rename('sprite_auto.svg'),
-    gulp.dest('build/img')
-  );
-});
-
-
-// *** Копирование файлов ***
-gulp.task('copy', () => {
-  return pipeline(
-    gulp.src([
-    'source/fonts/**/*.{woff,woff2}',
-    'source/img/**',
-    'source//*.ico'
-    ], {
-      base: 'source'
-    }),
-    gulp.dest('build')
-  );
-});
-
-
-// *** Очистка директории build/ ***
-gulp.task('clean', () => {
-  return del('build');
-});
-
-
-// *** Работа с Сервером ***
-gulp.task('server', () => {
-  server.init({
-    server: 'build/',
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false
-  });
-
-  gulp.watch('source/*.html', gulp.series('html', 'refresh'));
-  gulp.watch('source/sass/**/*.{scss,sass}', gulp.series('css'));
-  gulp.watch('source/js/*.js', gulp.series('js', 'refresh'));
-  gulp.watch('source/img/icon-*.svg', gulp.series('sprite', 'html', 'refresh'));
-});
-
-gulp.task('refresh', (done) => {
-  server.reload();
+// --- Таск для ручной оптимизации проектных изображений ---
+task('imagesoptimisation', (done) => {
+  imagesoptimisation();
   done();
 });
 
 
-// === Основные задачи для Сборки проекта в 'продакшн' и поднятие Сервера ===
-gulp.task('build', gulp.series('clean', 'copy', 'css', 'js', 'vendorjs', 'sprite', 'html'));
-gulp.task('start', gulp.series('build', 'server'));
+// --- Основной таск для поднятия сервера ---
+task('server', () => {
+  Utils.browserSync.init({
+    server: {
+      baseDir: './build',
+    },
+
+    notify: false,
+    open: true,
+    port: 9000,
+    injectchanges: true,
+
+    files: [
+      {
+        match: ['source/*.html'],
+        fn: series(html, 'refresh')
+      },
+      {
+        match: ['source/sass/**/*.{scss,sass}'],
+        fn: series(css)
+      },
+      {
+        match: ['source/js/**/*.js'],
+        fn: series(scripts, 'refresh')
+      },
+      {
+        match: ['source/img/**/icon-*.svg'],
+        fn: series(sprite, html, 'refresh')
+      }
+    ],
+  });
+});
+
+// --- Таск для перезагрузки страницы в браузере ---
+task('refresh', (done) => {
+  Utils.browserSync.reload();
+  done();
+});
+
+
+/*
+==========================================================================
+--- Основные задачи для Сборки проекта в 'продакшн' и поднятие Сервера ---
+==========================================================================
+*/
+task('build', series(clean, copy, css, scripts, sprite, html));
+task('start', series('build', 'server'));
