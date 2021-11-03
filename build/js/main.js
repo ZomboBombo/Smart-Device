@@ -1,32 +1,33 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
-
 /*
 ===================================================================================================================================
 ---------------------------------------- Модуль логики работы Аккордеона в Подвале: НАЧАЛО ----------------------------------------
 ===================================================================================================================================
 */
-window.accordeon = (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window.accordeon = function () {
   // ---------- КОНСТАНТЫ -----------
-  const VALUE_IS_TRUE = true;
+  var VALUE_IS_TRUE = true; // --------- DOM-элементы ---------
 
-
-  // --------- DOM-элементы ---------
-  const accordeonToggles = document.querySelectorAll('.accordeon-section__toggle-button');
-  const accordeonTabs = document.querySelectorAll('.accordeon-section__tab');
-
-
+  var accordeonToggles = document.querySelectorAll('.accordeon-section__toggle-button');
+  var accordeonTabs = document.querySelectorAll('.accordeon-section__tab');
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
-
   // *** Функция для обработчика события клика по тогглеру Аккордеона ***
-  const onAccordeonToggleClick = (evt) => {
+
+  var onAccordeonToggleClick = function onAccordeonToggleClick(evt) {
     evt.preventDefault();
-
-    const currentAccordeonToggle = evt.target;
-    const accordeonTabParent = currentAccordeonToggle.closest('.accordeon-section');
-    const currentAccordeonTab = accordeonTabParent.querySelector('.accordeon-section__tab');
-
+    var currentAccordeonToggle = evt.target;
+    var accordeonTabParent = currentAccordeonToggle.closest('.accordeon-section');
+    var currentAccordeonTab = accordeonTabParent.querySelector('.accordeon-section__tab');
     /*
     *** Если ТЕКУЩАЯ вкладка Аккордеона НЕ совпадает с перечисляемой в цикле, то:
     *** ---
@@ -35,14 +36,25 @@ window.accordeon = (() => {
     *** + УДАЛЯЕМ модификатор класса для тогглера;
     *** + УДАЛЯЕМ модификатор класса открытой вкладки.
     */
-    for (let accordeonTabToClose of accordeonTabs) {
-      if (accordeonTabToClose !== currentAccordeonTab) {
-        const closestAccordeonSection = accordeonTabToClose.closest('.accordeon-section');
-        const closestAccordeonToggle = closestAccordeonSection.querySelector('.accordeon-section__toggle-button');
 
-        closestAccordeonToggle.classList.remove('accordeon-section__toggle-button--tab-open');
-        accordeonTabToClose.classList.remove('accordeon-section__tab--tab-open');
+    var _iterator = _createForOfIteratorHelper(accordeonTabs),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var accordeonTabToClose = _step.value;
+
+        if (accordeonTabToClose !== currentAccordeonTab) {
+          var closestAccordeonSection = accordeonTabToClose.closest('.accordeon-section');
+          var closestAccordeonToggle = closestAccordeonSection.querySelector('.accordeon-section__toggle-button');
+          closestAccordeonToggle.classList.remove('accordeon-section__toggle-button--tab-open');
+          accordeonTabToClose.classList.remove('accordeon-section__tab--tab-open');
+        }
       }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
     }
 
     switch (VALUE_IS_TRUE) {
@@ -55,44 +67,68 @@ window.accordeon = (() => {
         currentAccordeonTab.classList.add('accordeon-section__tab--tab-open');
         currentAccordeonToggle.classList.add('accordeon-section__toggle-button--tab-open');
     }
-  };
+  }; // *** Цикл для установки модификаторов класса при активном JS на тогглеры Аккордеона ***
 
-
-  // *** Цикл для установки модификаторов класса при активном JS на тогглеры Аккордеона ***
   /*
   *** Также происходит установка обработчиков события клика
   *** на тогглеры Аккордеона.
   */
-  for (let accordeonToggle of accordeonToggles) {
-    accordeonToggle.classList.add('accordeon-section__toggle-button--js-active');
-    accordeonToggle.addEventListener('click', onAccordeonToggleClick);
-  }
 
 
-  // *** Цикл для установки модификаторов класса при активном JS на вкладки Аккордеона ***
-  for (let accordeonTab of accordeonTabs) {
-    accordeonTab.classList.add('accordeon-section__tab--js-active');
+  var _iterator2 = _createForOfIteratorHelper(accordeonToggles),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var accordeonToggle = _step2.value;
+      accordeonToggle.classList.add('accordeon-section__toggle-button--js-active');
+      accordeonToggle.addEventListener('click', onAccordeonToggleClick);
+    } // *** Цикл для установки модификаторов класса при активном JS на вкладки Аккордеона ***
+
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
   }
-})();
+
+  var _iterator3 = _createForOfIteratorHelper(accordeonTabs),
+      _step3;
+
+  try {
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      var accordeonTab = _step3.value;
+      accordeonTab.classList.add('accordeon-section__tab--js-active');
+    }
+  } catch (err) {
+    _iterator3.e(err);
+  } finally {
+    _iterator3.f();
+  }
+}();
 /*
 *** -------------------------------------- Модуль логики работы Аккордеона в Подвале: КОНЕЦ --------------------------------------
 */
 
+},{}],2:[function(require,module,exports){
 'use strict';
-
 /*
 ===================================================================================================================================
 ------------------------------------- Модуль логики обрезания части текста "О компании": НАЧАЛО -----------------------------------
 ===================================================================================================================================
 */
-window.characterLimiter = (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window.characterLimiter = function () {
   // ---------- КОНСТАНТЫ -----------
-  const TABLET_WIDTH = 768;
-  const CHARACTER_LIMITER = 370;
-  const FIRST_ELEMENT = 0;
-  const ELLIPSIS = '..';
-
-
+  var TABLET_WIDTH = 768;
+  var CHARACTER_LIMITER = 370;
+  var FIRST_ELEMENT = 0;
+  var ELLIPSIS = '..';
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
@@ -102,107 +138,117 @@ window.characterLimiter = (() => {
   *** если ширина вьюпорта МЕНЬШЕ, чем установленная на сайте Планшетная
   *** ширина.
   */
+
   if (document.documentElement.clientWidth <= TABLET_WIDTH) {
     // --------- DOM-элементы ---------
-    const aboutCompanySection = document.querySelector('#about-company-section');
-    const aboutCompanyDescriptionBox = aboutCompanySection.querySelector('#about-company-description-box');
-    const aboutCompanyParagraphs = aboutCompanyDescriptionBox.querySelectorAll('p');
+    var aboutCompanySection = document.querySelector('#about-company-section');
+    var aboutCompanyDescriptionBox = aboutCompanySection.querySelector('#about-company-description-box');
+    var aboutCompanyParagraphs = aboutCompanyDescriptionBox.querySelectorAll('p'); // --- Счётчик количества символов в тексте "О компании" ---
 
-    // --- Счётчик количества символов в тексте "О компании" ---
-    let characterCount = 0;
-    Array.from(aboutCompanyParagraphs).forEach((element) => {
+    var characterCount = 0;
+    Array.from(aboutCompanyParagraphs).forEach(function (element) {
       characterCount += element.textContent.length;
     });
-
-
     /*
     *** ЕСЛИ количество символов текста "О компании" превышает
     *** установленный допустимый лимит (CHARACTER_LIMITER),
     *** ТО запускается логика обработки текста.
     */
+
     if (characterCount >= CHARACTER_LIMITER) {
-      let currentRemainingСharactersCount = CHARACTER_LIMITER; // -- Счётчик ТЕКУЩЕГО оставшегося допустимого кол-ва символов
-      let previousRemainingСharactersCount = 0; // -- Счётчик ПРЕДЫДУЩЕГО оставшегося допустимого кол-ва символов
+      var currentRemainingСharactersCount = CHARACTER_LIMITER; // -- Счётчик ТЕКУЩЕГО оставшегося допустимого кол-ва символов
 
+      var previousRemainingСharactersCount = 0; // -- Счётчик ПРЕДЫДУЩЕГО оставшегося допустимого кол-ва символов
       // *** Очистка коллекции параграфов с текстом "О компании" ***
-      Array.from(aboutCompanyParagraphs).forEach((element) => {
+
+      Array.from(aboutCompanyParagraphs).forEach(function (element) {
         element.remove();
-      });
+      }); // *** Цикл для анализа эл-тов коллекции параграфов с текстом "О компании".
 
+      var _iterator = _createForOfIteratorHelper(aboutCompanyParagraphs),
+          _step;
 
-      // *** Цикл для анализа эл-тов коллекции параграфов с текстом "О компании".
-      for (let aboutCompanyParagraph of aboutCompanyParagraphs) {
-        currentRemainingСharactersCount -= aboutCompanyParagraph.textContent.length;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var aboutCompanyParagraph = _step.value;
+          currentRemainingСharactersCount -= aboutCompanyParagraph.textContent.length;
+          /*
+          *** ЕСЛИ текущее допустимое кол-во оставшихся символов Меньше либо Равно нулю,
+          *** ТО обрезать текущий параграф до необходимого кол-ва символов, добавить его
+          *** в DOM и прервать выполнение цикла.
+          ***
+          *** ИНАЧЕ — обновить счётчик ПРЕДЫДУЩЕГО оставшегося допустимого кол-ва символов
+          *** и добавить текущий параграф без изменений.
+          */
 
-        /*
-        *** ЕСЛИ текущее допустимое кол-во оставшихся символов Меньше либо Равно нулю,
-        *** ТО обрезать текущий параграф до необходимого кол-ва символов, добавить его
-        *** в DOM и прервать выполнение цикла.
-        ***
-        *** ИНАЧЕ — обновить счётчик ПРЕДЫДУЩЕГО оставшегося допустимого кол-ва символов
-        *** и добавить текущий параграф без изменений.
-        */
-        if (currentRemainingСharactersCount <= 0) {
-          const incompleteText = aboutCompanyParagraph.textContent.substring(FIRST_ELEMENT, previousRemainingСharactersCount);
-          aboutCompanyParagraph.textContent = incompleteText + ELLIPSIS;
-          aboutCompanyDescriptionBox.appendChild(aboutCompanyParagraph);
-          break;
-        } else {
-          previousRemainingСharactersCount = currentRemainingСharactersCount;
-          aboutCompanyDescriptionBox.appendChild(aboutCompanyParagraph);
+          if (currentRemainingСharactersCount <= 0) {
+            var incompleteText = aboutCompanyParagraph.textContent.substring(FIRST_ELEMENT, previousRemainingСharactersCount);
+            aboutCompanyParagraph.textContent = incompleteText + ELLIPSIS;
+            aboutCompanyDescriptionBox.appendChild(aboutCompanyParagraph);
+            break;
+          } else {
+            previousRemainingСharactersCount = currentRemainingСharactersCount;
+            aboutCompanyDescriptionBox.appendChild(aboutCompanyParagraph);
+          }
         }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
     }
   }
-})();
+}();
 /*
 *** ------------------------------------- Модуль логики обрезания части текста "О компании": КОНЕЦ -----------------------------------
 */
 
+},{}],3:[function(require,module,exports){
 'use strict';
-
 /*
 ===================================================================================================================================
 -------------------------------------------- Модуль маски ввода номера телефона: НАЧАЛО -------------------------------------------
 ===================================================================================================================================
 */
-window.maskForInputs = (() => {
-  // ---------- КОНСТАНТЫ -----------
-  const MIN_PHONE_LENGHT = 11;
-  const EMPTY = '';
 
-  // *** Словарь языковых аббревиатур ***
-  const LanguageAbbr = {
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window.maskForInputs = function () {
+  // ---------- КОНСТАНТЫ -----------
+  var MIN_PHONE_LENGHT = 11;
+  var EMPTY = ''; // *** Словарь языковых аббревиатур ***
+
+  var LanguageAbbr = {
     RU: 'ru',
     ru_RU: 'ru-RU',
     EN: 'en',
     en_US: 'en-US',
-    en_GB: 'en-GB',
-  };
+    en_GB: 'en-GB'
+  }; // *** Словарь сообщений валидации полей Формы ***
 
-  // *** Словарь сообщений валидации полей Формы ***
-  const ValidityMessage = {
+  var ValidityMessage = {
     PHONE_RU: 'Номер телефона введён не полностью. Пожалуйста, введите номер телефона.',
-    PHONE_EN: 'The phone number is incomplete. Please enter your phone number.',
-  };
+    PHONE_EN: 'The phone number is incomplete. Please enter your phone number.'
+  }; // --------- DOM-элементы ---------
 
-
-  // --------- DOM-элементы ---------
-  const telInputs = document.querySelectorAll('input[type="tel"]');
-
-
+  var telInputs = document.querySelectorAll('input[type="tel"]');
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
-
   // *** Переменная, определяющая язык Локали браузера ***
-  const browserLanguage = navigator.language;
 
+  var browserLanguage = navigator.language;
   /*
   *** Условия определения, на каком языке будет выведено
   *** валидационное сообщение (по умолчанию — на Русском)
   */
-  let phoneValidityMessage = EMPTY;
+
+  var phoneValidityMessage = EMPTY;
+
   switch (true) {
     case browserLanguage === LanguageAbbr.RU || browserLanguage === LanguageAbbr.ru_RU:
       phoneValidityMessage = ValidityMessage.PHONE_RU;
@@ -215,87 +261,103 @@ window.maskForInputs = (() => {
     default:
       phoneValidityMessage = ValidityMessage.PHONE_RU;
   }
-
-
   /*
   *** Ф-ция для обработчика события ИЗМЕНЕНИЯ содержимого
   *** поля ввода номера телефона
   */
-  const onInputChange = (inputElement) => {
-    const regExpForInput = /^\d$/;
-    const valueOfInput = inputElement.value;
 
-    // --- Счётчик цифровых символов ---
-    let truePhoneLength = 0;
 
+  var onInputChange = function onInputChange(inputElement) {
+    var regExpForInput = /^\d$/;
+    var valueOfInput = inputElement.value; // --- Счётчик цифровых символов ---
+
+    var truePhoneLength = 0;
     /*
     *** Цикл перебирает строку посимвольно:
     *** ---
     *** ЕСЛИ текущий символ соответствует установленному RegExp,
     *** ТОГДА счётчик увеличивается на один.
     */
-    for (let i = 0; i < valueOfInput.length; i++) {
+
+    for (var i = 0; i < valueOfInput.length; i++) {
       if (valueOfInput.charAt(i).match(regExpForInput)) {
         truePhoneLength++;
       }
     }
-
     /*
     *** ЕСЛИ количество цифровых символов в номере телефона
     *** меньше установленной Минимальной длины,
     *** ТОГДА выведется валидационное сообщение
     */
+
+
     if (truePhoneLength < MIN_PHONE_LENGHT) {
       inputElement.setCustomValidity(phoneValidityMessage);
     } else {
       inputElement.setCustomValidity(EMPTY);
     }
-  };
+  }; // *** Установка обработчика события и маски на все поля ввода номера телефона ***
 
 
-  // *** Установка обработчика события и маски на все поля ввода номера телефона ***
-  for (let telInput of telInputs) {
-    Inputmask({ 'mask': '+7 (999) 999-99-99' }).mask(telInput);
-    telInput.addEventListener('change', () => {
-      onInputChange(telInput);
-    });
+  var _iterator = _createForOfIteratorHelper(telInputs),
+      _step;
+
+  try {
+    var _loop = function _loop() {
+      var telInput = _step.value;
+      Inputmask({
+        'mask': '+7 (999) 999-99-99'
+      }).mask(telInput);
+      telInput.addEventListener('change', function () {
+        onInputChange(telInput);
+      });
+    };
+
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
-})();
+}();
 /*
 ===================================================================================================================================
 -------------------------------------------- Модуль маски ввода номера телефона: КОНЕЦ --------------------------------------------
 ===================================================================================================================================
 */
 
+},{}],4:[function(require,module,exports){
 'use strict';
-
 /*
 ===================================================================================================================================
 ------------------------------------------- Модуль логики работы Модального окна: НАЧАЛО ------------------------------------------
 ===================================================================================================================================
 */
-window.modal = (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window.modal = function () {
   // ----------- КОНСТАНТЫ ----------
-  const PAGE_TOP = 0;
+  var PAGE_TOP = 0; // *** Словарик для значений клавиши "Escape" ***
 
-  // *** Словарик для значений клавиши "Escape" ***
-  const EscapeKey = {
+  var EscapeKey = {
     FULL_NAME: 'Escape',
-    ABBREVIATED_NAME: 'Esc',
-  };
+    ABBREVIATED_NAME: 'Esc'
+  }; // --------- DOM-элементы ---------
 
-
-  // --------- DOM-элементы ---------
-  const body = document.querySelector('body');
-
-  const modals = body.querySelectorAll('.modal');
-  const modalOverlay = body.querySelector('#modal-overlay');
-  const modalForm = modalOverlay.querySelector('form');
-  const formNameField = modalForm.querySelector('#callback-popup-customer-name');
-  const callbackButton = body.querySelector('#callback-button');
-  const callbackPopupCloseButton = body.querySelector('#callback-popup-close');
-
-
+  var body = document.querySelector('body');
+  var modals = body.querySelectorAll('.modal');
+  var modalOverlay = body.querySelector('#modal-overlay');
+  var modalForm = modalOverlay.querySelector('form');
+  var formNameField = modalForm.querySelector('#callback-popup-customer-name');
+  var callbackButton = body.querySelector('#callback-button');
+  var callbackPopupCloseButton = body.querySelector('#callback-popup-close');
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
@@ -304,166 +366,207 @@ window.modal = (() => {
   *** Функция для расчёта расстояния, которое было
   *** "проскроллено" от начала страницы
   */
-  const getBodyScrollTop = () => {
-    return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+
+  var getBodyScrollTop = function getBodyScrollTop() {
+    return self.pageYOffset || document.documentElement && document.documentElement.scrollTop || document.body && document.body.scrollTop;
   };
-
-
   /*
   *** Функция-флаг для определения, СУЩЕСТВУЕТ ли
   *** на странице Вертикальный скролл
   */
-  const isExistVerticalScroll = () => {
+
+
+  var isExistVerticalScroll = function isExistVerticalScroll() {
     return document.body.offsetHeight > window.innerHeight;
   };
-
-
   /*
   *** Функция для обработчика события ЗАКРЫТИЯ попапа с Формой
   *** при НАЖАТИИ на клавишу "Escape"
   */
-  const onEscPress = (evt) => {
+
+
+  var onEscPress = function onEscPress(evt) {
     if (evt.key === EscapeKey.FULL_NAME || evt.key === EscapeKey.ABBREVIATED_NAME) {
       evt.preventDefault();
 
-      for (let modalClose of modals) {
-        modalClose.classList.remove('modal--show');
+      var _iterator = _createForOfIteratorHelper(modals),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var modalClose = _step.value;
+          modalClose.classList.remove('modal--show');
+        }
+        /*
+        *** ЕСЛИ Вертикальный скролл сущетвует,
+        *** ВЕРНУТЬ возможность скролла страницы
+        *** и "проскроллить" страницу на прежнее место
+        */
+
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
       }
 
-      /*
-      *** ЕСЛИ Вертикальный скролл сущетвует,
-      *** ВЕРНУТЬ возможность скролла страницы
-      *** и "проскроллить" страницу на прежнее место
-      */
       if (isExistVerticalScroll()) {
         body.classList.remove('body-scroll-disabled');
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
       modalForm.reset();
-
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
       document.removeEventListener('keydown', onEscPress);
     }
   };
-
-
   /*
   *** Функция для обработчика события ЗАКРЫТИЯ попапа с Формой
   *** при КЛИКЕ на "пустое пространство" (оверлей попапа)
   */
-  const onModalOverlayClick = (evt) => {
+
+
+  var onModalOverlayClick = function onModalOverlayClick(evt) {
     if (evt.target === modalOverlay) {
-      for (let modalClose of modals) {
-        modalClose.classList.remove('modal--show');
+      var _iterator2 = _createForOfIteratorHelper(modals),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var modalClose = _step2.value;
+          modalClose.classList.remove('modal--show');
+        }
+        /*
+        *** ЕСЛИ Вертикальный скролл сущетвует,
+        *** ВЕРНУТЬ возможность скролла страницы
+        *** и "проскроллить" страницу на прежнее место
+        */
+
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
       }
 
-      /*
-      *** ЕСЛИ Вертикальный скролл сущетвует,
-      *** ВЕРНУТЬ возможность скролла страницы
-      *** и "проскроллить" страницу на прежнее место
-      */
       if (isExistVerticalScroll()) {
         body.classList.remove('body-scroll-disabled');
         window.scrollTo(PAGE_TOP, body.dataset.scrollY);
       }
 
       modalForm.reset();
-
       callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
       modalOverlay.removeEventListener('click', onModalOverlayClick);
       document.addEventListener('keydown', onEscPress);
     }
   };
-
-
   /*
   *** Функция для обработчика события ЗАКРЫТИЯ попапа с Формой
   *** при КЛИКЕ на кнопку Закрытия ("крестик")
   */
-  const onCallbackPopupClose = (evt) => {
+
+
+  var onCallbackPopupClose = function onCallbackPopupClose(evt) {
     evt.preventDefault();
 
-    for (let modalClose of modals) {
-      modalClose.classList.remove('modal--show');
+    var _iterator3 = _createForOfIteratorHelper(modals),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var modalClose = _step3.value;
+        modalClose.classList.remove('modal--show');
+      }
+      /*
+      *** ЕСЛИ Вертикальный скролл сущетвует,
+      *** ВЕРНУТЬ возможность скролла страницы
+      *** и "проскроллить" страницу на прежнее место
+      */
+
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
     }
 
-    /*
-    *** ЕСЛИ Вертикальный скролл сущетвует,
-    *** ВЕРНУТЬ возможность скролла страницы
-    *** и "проскроллить" страницу на прежнее место
-    */
     if (isExistVerticalScroll()) {
       body.classList.remove('body-scroll-disabled');
       window.scrollTo(PAGE_TOP, body.dataset.scrollY);
     }
 
     modalForm.reset();
-
     callbackPopupCloseButton.removeEventListener('click', onCallbackPopupClose);
     modalOverlay.removeEventListener('click', onModalOverlayClick);
     document.removeEventListener('keydown', onEscPress);
-  };
+  }; // *** Функция для обработчика события ОТКРЫТИЯ попапа с Формой обратной связи ***
 
 
-  // *** Функция для обработчика события ОТКРЫТИЯ попапа с Формой обратной связи ***
-  const onCallbackButtonClick = (evt) => {
+  var onCallbackButtonClick = function onCallbackButtonClick(evt) {
     evt.preventDefault();
 
-    for (let modalOpen of modals) {
-      modalOpen.classList.add('modal--show');
+    var _iterator4 = _createForOfIteratorHelper(modals),
+        _step4;
+
+    try {
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var modalOpen = _step4.value;
+        modalOpen.classList.add('modal--show');
+      }
+    } catch (err) {
+      _iterator4.e(err);
+    } finally {
+      _iterator4.f();
     }
 
-    formNameField.focus();
+    formNameField.focus(); // --- Расчёт проскролленого расстояния от НАЧАЛА страницы ---
 
-    // --- Расчёт проскролленого расстояния от НАЧАЛА страницы ---
     body.dataset.scrollY = getBodyScrollTop();
-
     /*
     *** ЕСЛИ Вертикальный скролл сущетвует,
     *** УБРАТЬ возможность скролла страницы
     *** и "проскроллить" страницу на прежнее место
     */
+
     if (isExistVerticalScroll()) {
       body.classList.add('body-scroll-disabled');
-      body.style.top = `-${body.dataset.scrollY}px`;
+      body.style.top = "-".concat(body.dataset.scrollY, "px");
     }
 
     callbackPopupCloseButton.addEventListener('click', onCallbackPopupClose);
     modalOverlay.addEventListener('click', onModalOverlayClick);
     document.addEventListener('keydown', onEscPress);
-  };
+  }; // === ДОБАВЛЕНИЕ обработчика события Открытия попапа с Формой ===
 
 
-  // === ДОБАВЛЕНИЕ обработчика события Открытия попапа с Формой ===
   callbackButton.addEventListener('click', onCallbackButtonClick);
-})();
+}();
 /*
 *** --------------------------------------------- Модуль логики Модального окна: КОНЕЦ --------------------------------------------
 */
 
+},{}],5:[function(require,module,exports){
 'use strict';
-
 /*
 ===================================================================================================================================
 --------------------------------------- Модуль сохранения данных Формы в localStorage: НАЧАЛО -------------------------------------
 ===================================================================================================================================
 */
-window.saveToLocalStorage = (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+window.saveToLocalStorage = function () {
   // ---------- КОНСТАНТЫ -----------
-  const FormField = {
+  var FormField = {
     TYPE_TEXT: 'text',
     TYPE_TEL: 'tel',
     TAG_TEXTAREA: 'textarea'
-  };
+  }; // --------- DOM-элементы ---------
 
-
-  // --------- DOM-элементы ---------
-  const formInputs = document.querySelectorAll('form input');
-  const formTextareas = document.querySelectorAll('form textarea');
-
-
+  var formInputs = document.querySelectorAll('form input');
+  var formTextareas = document.querySelectorAll('form textarea');
   /*
   ======================== ОСНОВНАЯ ЛОГИКА ========================
   */
@@ -472,35 +575,51 @@ window.saveToLocalStorage = (() => {
   *** Ф-ция для обработчика события ИЗМЕНЕНИЯ значения
   *** в поле ввода
   */
-  const onFormFieldChange = (fieldToSave) => {
+
+  var onFormFieldChange = function onFormFieldChange(fieldToSave) {
     localStorage.setItem(fieldToSave.name, fieldToSave.value);
-  };
+  }; // *** Ф-ция для СОХРАНЕНИЯ значений полей Формы в `localStorage` ***
 
 
-  // *** Ф-ция для СОХРАНЕНИЯ значений полей Формы в `localStorage` ***
-  const saveValueToLocalStorage = (formFields) => {
-    for (let formFieldToSave of formFields) {
-      const typeOfField = formFieldToSave.getAttribute('type');
-      const tagNameOfField = formFieldToSave.tagName.toLowerCase();
+  var saveValueToLocalStorage = function saveValueToLocalStorage(formFields) {
+    var _iterator = _createForOfIteratorHelper(formFields),
+        _step;
 
-      if (typeOfField === FormField.TYPE_TEXT || typeOfField === FormField.TYPE_TEL || tagNameOfField === FormField.TAG_TEXTAREA) {
-        formFieldToSave.addEventListener('change', () => {
-          onFormFieldChange(formFieldToSave);
-        });
+    try {
+      var _loop = function _loop() {
+        var formFieldToSave = _step.value;
+        var typeOfField = formFieldToSave.getAttribute('type');
+        var tagNameOfField = formFieldToSave.tagName.toLowerCase();
+
+        if (typeOfField === FormField.TYPE_TEXT || typeOfField === FormField.TYPE_TEL || tagNameOfField === FormField.TAG_TEXTAREA) {
+          formFieldToSave.addEventListener('change', function () {
+            onFormFieldChange(formFieldToSave);
+          });
+        }
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop();
       }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
     }
   };
-
-
   /*
   *** Вызовы ф-ции СОХРАНЕНИЯ значений в `localStorage`
   *** для каждой коллекции элементов ввода
   */
+
+
   saveValueToLocalStorage(formInputs);
   saveValueToLocalStorage(formTextareas);
-})();
+}();
 /*
 ===================================================================================================================================
 --------------------------------------- Модуль сохранения данных Формы в localStorage: КОНЕЦ --------------------------------------
 ===================================================================================================================================
 */
+
+},{}]},{},[1,2,3,4,5]);
