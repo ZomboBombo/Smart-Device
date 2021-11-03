@@ -19,7 +19,7 @@
     "gulp-cheerio": "1.0.0",
     "gulp-concat": "2.6.1",
     "gulp-csso": "4.0.1",
-    "gulp-imagemin": "8.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-plumber": "1.2.1",
     "gulp-postcss": "9.0.1",
     "gulp-posthtml": "3.0.5",
@@ -41,11 +41,15 @@
     "editorconfig": "editorconfig-cli",
     "stylelint": "stylelint \"source/sass/**/*.scss\" --custom-syntax postcss-scss",
     "test": "npm run editorconfig && npm run stylelint && eslint source/js/",
-    "build": "gulp build",
-    "start": "gulp start",
     "webp": "gulp webp",
-    "sprite": "gulp sprite"
+    "sprite": "gulp sprite",
+    "build": "gulp build",
+    "start": "gulp start"
   },
+  "typeRoots": [
+    "./node_modules/@types",
+    "./types"
+  ],
   "browserslist": [
     "last 2 versions",
     "IE 11",
