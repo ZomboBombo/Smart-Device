@@ -33,7 +33,7 @@
     "posthtml-include": "1.7.2",
     "readable-stream": "3.6.0",
     "sass": "1.43.4",
-    "stylelint": "^14.0.1",
+    "stylelint": "13.13.1",
     "stylelint-config-htmlacademy": "^0.1.10",
     "vinyl-source-stream": "2.0.0"
   },
